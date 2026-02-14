@@ -8,6 +8,7 @@ import com.fulfilment.application.monolith.warehouses.domain.usecases.ReplaceWar
 import com.warehouse.api.WarehouseResource;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import jakarta.validation.constraints.NotNull;
 import java.util.List;
 
@@ -41,6 +42,7 @@ public class WarehouseResourceImpl implements WarehouseResource {
   }
 
   @Override
+  @Transactional
   public void archiveAWarehouseUnitByID(String id) {
     Warehouse domainWarehouse = new Warehouse();
     domainWarehouse.businessUnitCode = id;

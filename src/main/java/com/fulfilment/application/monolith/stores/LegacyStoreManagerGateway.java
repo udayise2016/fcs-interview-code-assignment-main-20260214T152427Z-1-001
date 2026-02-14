@@ -42,16 +42,16 @@ public class LegacyStoreManagerGateway {
       // Step 1: Create a temporary file
       Path tempFile;
 
-      tempFile = Files.createTempFile(store.name, ".txt");
+      tempFile = Files.createTempFile(store.getName(), ".txt");
 
       System.out.println("Temporary file created at: " + tempFile.toString());
 
       // Step 2: Write data to the temporary file
       String content =
           "Store created. [ name ="
-              + store.name
+              + store.getName()
               + " ] [ items on stock ="
-              + store.quantityProductsInStock
+              + store.getQuantityProductsInStock()
               + "]";
       Files.write(tempFile, content.getBytes());
       System.out.println("Data written to temporary file.");

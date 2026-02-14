@@ -1,8 +1,6 @@
 package com.fulfilment.application.monolith.health;
 
-import io.quarkus.runtime.ApplicationLifecycleManager;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
 import java.lang.management.OperatingSystemMXBean;
@@ -16,9 +14,6 @@ import java.util.Map;
  */
 @ApplicationScoped
 public class WarehouseSystemHealthCheck {
-
-    @Inject
-    ApplicationLifecycleManager lifecycleManager;
 
     private final Instant startTime = Instant.now();
 
@@ -73,14 +68,35 @@ public class WarehouseSystemHealthCheck {
         );
     }
 
-    private Map<String, Object> getBusinessMetrics() {
-        // Add business-specific health metrics
-        return Map.of(
-            "active_warehouses", getActiveWarehouseCount(),
-            "pending_operations", getPendingOperationCount(),
-            "error_rate", getErrorRate(),
-            "response_time", getAverageResponseTime()
-        );
+    private int getActiveWarehouseCount() {
+        // Query database for active warehouses
+        return 10; // Placeholder - implement actual query
+    }
+
+    private int getPendingOperationCount() {
+        // Get pending operations count
+        return 5; // Placeholder - implement actual query
+    }
+
+    private double getErrorRate() {
+        // Calculate error rate from logs or metrics
+        return 0.01; // Placeholder - implement actual calculation
+    }
+
+    private double getAverageResponseTime() {
+        // Get average response time from metrics
+        return 150.5; // Placeholder - implement actual calculation
+    }
+
+    public Map<String, Object> getBusinessMetrics() {
+        Map<String, Object> metrics = new HashMap<>();
+
+        metrics.put("active_warehouses", getActiveWarehouseCount());
+        metrics.put("pending_operations", getPendingOperationCount());
+        metrics.put("error_rate", getErrorRate());
+        metrics.put("response_time", getAverageResponseTime());
+
+        return metrics;
     }
 
     private boolean isMemoryHealthy() {
@@ -101,28 +117,36 @@ public class WarehouseSystemHealthCheck {
         return systemLoadAverage <= availableProcessors * 2;
     }
 
-    private String getApplicationVersion() {
+    public Map<String, Object> getSystemMetrics() {
+        Map<String, Object> metrics = new HashMap<>();
+        
+        // Memory metrics
+        MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();
+        long usedHeap = memoryBean.getHeapMemoryUsage().getUsed();
+        long maxHeap = memoryBean.getHeapMemoryUsage().getMax();
+        long usedNonHeap = memoryBean.getNonHeapMemoryUsage().getUsed();
+        long maxNonHeap = memoryBean.getNonHeapMemoryUsage().getMax();
+        
+        metrics.put("heap_used", usedHeap);
+        metrics.put("heap_max", maxHeap);
+        metrics.put("heap_usage_percent", maxHeap > 0 ? (double) usedHeap / maxHeap * 100 : 0);
+        metrics.put("non_heap_used", usedNonHeap);
+        metrics.put("non_heap_max", maxNonHeap);
+        metrics.put("non_heap_usage_percent", maxNonHeap > 0 ? (double) usedNonHeap / maxNonHeap * 100 : 0);
+        
+        // CPU metrics
+        OperatingSystemMXBean osBean = ManagementFactory.getOperatingSystemMXBean();
+        int processors = osBean.getAvailableProcessors();
+        double systemLoad = osBean.getSystemLoadAverage();
+        
+        metrics.put("processors", processors);
+        metrics.put("system_load_average", systemLoad);
+        
+        return metrics;
+    }
+
+    public String getApplicationVersion() {
         // Get application version from manifest or properties
         return "1.0.0"; // This should be dynamically retrieved
-    }
-
-    private int getActiveWarehouseCount() {
-        // Query database for active warehouses
-        return 10; // Placeholder - implement actual query
-    }
-
-    private int getPendingOperationCount() {
-        // Get pending operations count
-        return 5; // Placeholder - implement actual query
-    }
-
-    private double getErrorRate() {
-        // Calculate error rate from logs or metrics
-        return 0.01; // Placeholder - implement actual calculation
-    }
-
-    private double getAverageResponseTime() {
-        // Get average response time from metrics
-        return 150.5; // Placeholder - implement actual calculation
     }
 }

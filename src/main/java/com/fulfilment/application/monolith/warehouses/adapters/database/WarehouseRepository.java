@@ -4,6 +4,7 @@ import com.fulfilment.application.monolith.warehouses.domain.models.Warehouse;
 import com.fulfilment.application.monolith.warehouses.domain.ports.WarehouseStore;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,15 +17,17 @@ public class WarehouseRepository implements WarehouseStore, PanacheRepository<Db
   }
 
   @Override
+  @Transactional
   public void create(Warehouse warehouse) {
     if (warehouse.createdAt == null) {
       warehouse.createdAt = LocalDateTime.now();
     }
     DbWarehouse dbWarehouse = new DbWarehouse(warehouse);
-    this.persist(dbWarehouse);
+    this.persistAndFlush(dbWarehouse);
   }
 
   @Override
+  @Transactional
   public void update(Warehouse warehouse) {
     DbWarehouse dbWarehouse = find("businessUnitCode", warehouse.businessUnitCode).firstResult();
     if (dbWarehouse != null) {
@@ -33,11 +36,12 @@ public class WarehouseRepository implements WarehouseStore, PanacheRepository<Db
       dbWarehouse.stock = warehouse.stock;
       dbWarehouse.createdAt = warehouse.createdAt;
       dbWarehouse.archivedAt = warehouse.archivedAt;
-      this.persist(dbWarehouse);
+      this.persistAndFlush(dbWarehouse);
     }
   }
 
   @Override
+  @Transactional
   public void remove(Warehouse warehouse) {
     DbWarehouse dbWarehouse = find("businessUnitCode", warehouse.businessUnitCode).firstResult();
     if (dbWarehouse != null) {
