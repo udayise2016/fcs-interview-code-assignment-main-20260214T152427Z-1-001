@@ -68,7 +68,7 @@ public class StoreResource {
   @Path("{id}")
   @Transactional
   public Store update(Long id, Store updatedStore) {
-    if (updatedStore.name == null) {
+    if (updatedStore.getName() == null) {
       throw new WebApplicationException("Store Name was not set on request.", 422);
     }
 
@@ -78,8 +78,9 @@ public class StoreResource {
       throw new WebApplicationException("Store with id of " + id + " does not exist.", 404);
     }
 
-    entity.name = updatedStore.name;
-    entity.quantityProductsInStock = updatedStore.quantityProductsInStock;
+    entity.setName(updatedStore.getName());
+    entity.setQuantityProductsInStock(
+        updatedStore.getQuantityProductsInStock());
 
     // Fire event after transaction commits
     storeTransactionEvent.fire(new StoreTransactionEvent(updatedStore, StoreTransactionEvent.Action.UPDATE));
@@ -91,7 +92,7 @@ public class StoreResource {
   @Path("{id}")
   @Transactional
   public Store patch(Long id, Store updatedStore) {
-    if (updatedStore.name == null) {
+    if (updatedStore.getName() == null) {
       throw new WebApplicationException("Store Name was not set on request.", 422);
     }
 
@@ -101,12 +102,13 @@ public class StoreResource {
       throw new WebApplicationException("Store with id of " + id + " does not exist.", 404);
     }
 
-    if (entity.name != null) {
-      entity.name = updatedStore.name;
+    if (entity.getName() != null) {
+      entity.setName(updatedStore.getName());
     }
 
-    if (entity.quantityProductsInStock != 0) {
-      entity.quantityProductsInStock = updatedStore.quantityProductsInStock;
+    if (entity.getQuantityProductsInStock() != 0) {
+      entity.setQuantityProductsInStock(
+          updatedStore.getQuantityProductsInStock());
     }
 
     // Fire event after transaction commits

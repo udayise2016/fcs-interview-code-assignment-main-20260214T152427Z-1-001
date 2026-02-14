@@ -9,17 +9,18 @@ import java.util.List;
 @ApplicationScoped
 public class LocationGateway implements LocationResolver {
 
-  private static final List<Location> locations = new ArrayList<>();
+  /** List of predefined locations. */
+  private static final List<Location> LOCATIONS = new ArrayList<>();
 
   static {
-    locations.add(new Location("ZWOLLE-001", 1, 40));
-    locations.add(new Location("ZWOLLE-002", 2, 50));
-    locations.add(new Location("AMSTERDAM-001", 5, 100));
-    locations.add(new Location("AMSTERDAM-002", 3, 75));
-    locations.add(new Location("TILBURG-001", 1, 40));
-    locations.add(new Location("HELMOND-001", 1, 45));
-    locations.add(new Location("EINDHOVEN-001", 2, 70));
-    locations.add(new Location("VETSBY-001", 1, 90));
+    LOCATIONS.add(new Location("ZWOLLE-001", 1, 40));
+    LOCATIONS.add(new Location("ZWOLLE-002", 2, 50));
+    LOCATIONS.add(new Location("AMSTERDAM-001", 5, 100));
+    LOCATIONS.add(new Location("AMSTERDAM-002", 3, 75));
+    LOCATIONS.add(new Location("TILBURG-001", 1, 40));
+    LOCATIONS.add(new Location("HELMOND-001", 1, 45));
+    LOCATIONS.add(new Location("EINDHOVEN-001", 2, 70));
+    LOCATIONS.add(new Location("VETSBY-001", 1, 90));
   }
 
   @Override
@@ -28,7 +29,7 @@ public class LocationGateway implements LocationResolver {
       return null;
     }
     
-    return locations.stream()
+    return LOCATIONS.stream()
         .filter(location -> location.identification.equals(identifier))
         .findFirst()
         .orElse(null);

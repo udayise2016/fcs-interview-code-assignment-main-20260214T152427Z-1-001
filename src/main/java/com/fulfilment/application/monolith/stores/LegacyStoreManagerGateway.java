@@ -4,20 +4,40 @@ import jakarta.enterprise.context.ApplicationScoped;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+/**
+ * Gateway for interacting with the legacy store manager system.
+ */
 @ApplicationScoped
 public class LegacyStoreManagerGateway {
 
-  public void createStoreOnLegacySystem(Store store) {
-    // just to emulate as this would send this to a legacy system, let's write a temp file with the
+  /**
+   * Creates a store on the legacy system.
+   *
+   * @param store the store to create
+   */
+  public void createStoreOnLegacySystem(final Store store) {
+    // just to emulate as this would send this to a legacy system,
+    // let's write a temp file with the
     writeToFile(store);
   }
 
-  public void updateStoreOnLegacySystem(Store store) {
-    // just to emulate as this would send this to a legacy system, let's write a temp file with the
+  /**
+   * Updates a store on the legacy system.
+   *
+   * @param store the store to update
+   */
+  public void updateStoreOnLegacySystem(final Store store) {
+    // just to emulate as this would send this to a legacy system,
+    // let's write a temp file with the
     writeToFile(store);
   }
 
-  private void writeToFile(Store store) {
+  /**
+   * Writes store information to a temporary file.
+   *
+   * @param store the store to write
+   */
+  private void writeToFile(final Store store) {
     try {
       // Step 1: Create a temporary file
       Path tempFile;
