@@ -71,19 +71,19 @@ class StoreTransactionEventListenerTest {
         // When & Then
         assertNotNull(store1);
         assertNotNull(store2);
-        assertEquals("Test Store", store2.name);
+        assertEquals("Test Store", store2.getName());
     }
 
     @Test
     void testStoreFields() {
         // Given
         Store store = new Store();
-        store.name = "Test Store";
-        store.quantityProductsInStock = 500;
+        store.setName("Test Store");
+        store.setQuantityProductsInStock(500);
 
         // When & Then
-        assertEquals("Test Store", store.name);
-        assertEquals(500, store.quantityProductsInStock);
+        assertEquals("Test Store", store.getName());
+        assertEquals(500, store.getQuantityProductsInStock());
     }
 
     @Test
@@ -91,7 +91,7 @@ class StoreTransactionEventListenerTest {
         // Given
         LegacyStoreManagerGateway legacyGateway = new LegacyStoreManagerGateway();
         Store store = new Store("Test Store");
-        store.quantityProductsInStock = 1000;
+        store.setQuantityProductsInStock(1000);
 
         // When & Then
         assertDoesNotThrow(() -> legacyGateway.createStoreOnLegacySystem(store));
@@ -102,7 +102,7 @@ class StoreTransactionEventListenerTest {
         // Given
         LegacyStoreManagerGateway legacyGateway = new LegacyStoreManagerGateway();
         Store store = new Store("Test Store");
-        store.quantityProductsInStock = 1000;
+        store.setQuantityProductsInStock(1000);
 
         // When & Then
         assertDoesNotThrow(() -> legacyGateway.updateStoreOnLegacySystem(store));
@@ -123,7 +123,7 @@ class StoreTransactionEventListenerTest {
         // Given
         LegacyStoreManagerGateway legacyGateway = new LegacyStoreManagerGateway();
         Store store = new Store("");
-        store.quantityProductsInStock = 1000;
+        store.setQuantityProductsInStock(1000);
 
         // When & Then
         assertDoesNotThrow(() -> legacyGateway.createStoreOnLegacySystem(store));
@@ -135,7 +135,7 @@ class StoreTransactionEventListenerTest {
         // Given
         LegacyStoreManagerGateway legacyGateway = new LegacyStoreManagerGateway();
         Store store = new Store("Zero Stock Store");
-        store.quantityProductsInStock = 0;
+        store.setQuantityProductsInStock(0);
 
         // When & Then
         assertDoesNotThrow(() -> legacyGateway.createStoreOnLegacySystem(store));
@@ -147,7 +147,7 @@ class StoreTransactionEventListenerTest {
         // Given
         LegacyStoreManagerGateway legacyGateway = new LegacyStoreManagerGateway();
         Store store = new Store("Large Stock Store");
-        store.quantityProductsInStock = Integer.MAX_VALUE;
+        store.setQuantityProductsInStock(Integer.MAX_VALUE);
 
         // When & Then
         assertDoesNotThrow(() -> legacyGateway.createStoreOnLegacySystem(store));
