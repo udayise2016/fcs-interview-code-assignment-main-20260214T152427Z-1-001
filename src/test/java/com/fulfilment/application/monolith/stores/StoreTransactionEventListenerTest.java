@@ -52,14 +52,14 @@ class StoreTransactionEventListenerTest {
     void testStoreTransactionEventConstructorAndGetters() {
         // Given
         Store store = new Store("Test Store");
-        store.quantityProductsInStock = 1000;
+        store.setQuantityProductsInStock(1000);
         StoreTransactionEvent event = new StoreTransactionEvent(store, StoreTransactionEvent.Action.CREATE);
 
         // When & Then
         assertEquals(StoreTransactionEvent.Action.CREATE, event.getAction());
         assertEquals(store, event.getStore());
-        assertEquals("Test Store", event.getStore().name);
-        assertEquals(1000, event.getStore().quantityProductsInStock);
+        assertEquals("Test Store", event.getStore().getName());
+        assertEquals(1000, event.getStore().getQuantityProductsInStock());
     }
 
     @Test
