@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Store.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java-code-assignment</a> &gt; <a href="index.source.html" class="el_package">com.fulfilment.application.monolith.stores</a> &gt; <span class="el_source">Store.java</span></div><h1>Store.java</h1><pre class="source lang-java linenums">package com.fulfilment.application.monolith.stores;
+
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import jakarta.persistence.Cacheable;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+
+/**
+ * Store entity representing a store in the system.
+ */
+@Entity
+@Cacheable
+public class Store extends PanacheEntity {
+
+  /** Maximum name length. */
+  private static final int MAX_NAME_LENGTH = 40;
+
+  /** The store name. */
+  @Column(length = MAX_NAME_LENGTH, unique = true)
+  private String name;
+
+  /** The quantity of products in stock. */
+  private int quantityProductsInStock;
+
+  /** Default constructor. */
+<span class="nc" id="L26">  public Store() { }</span>
+
+  /**
+   * Constructs a new Store with the specified name.
+   *
+   * @param name the store name
+   */
+<span class="nc" id="L33">  public Store(final String name) {</span>
+<span class="nc" id="L34">    this.name = name;</span>
+<span class="nc" id="L35">  }</span>
+
+  /**
+   * Gets the store name.
+   *
+   * @return the store name
+   */
+  public String getName() {
+<span class="nc" id="L43">    return name;</span>
+  }
+
+  /**
+   * Sets the store name.
+   *
+   * @param name the store name
+   */
+  public void setName(final String name) {
+<span class="nc" id="L52">    this.name = name;</span>
+<span class="nc" id="L53">  }</span>
+
+  /**
+   * Gets the quantity of products in stock.
+   *
+   * @return the quantity of products in stock
+   */
+  public int getQuantityProductsInStock() {
+<span class="nc" id="L61">    return quantityProductsInStock;</span>
+  }
+
+  /**
+   * Sets the quantity of products in stock.
+   *
+   * @param quantityProductsInStock the quantity of products in stock
+   */
+  public void setQuantityProductsInStock(
+      final int quantityProductsInStock) {
+<span class="nc" id="L71">    this.quantityProductsInStock = quantityProductsInStock;</span>
+<span class="nc" id="L72">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

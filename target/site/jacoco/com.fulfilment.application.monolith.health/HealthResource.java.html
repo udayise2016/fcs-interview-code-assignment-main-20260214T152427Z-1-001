@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HealthResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java-code-assignment</a> &gt; <a href="index.source.html" class="el_package">com.fulfilment.application.monolith.health</a> &gt; <span class="el_source">HealthResource.java</span></div><h1>HealthResource.java</h1><pre class="source lang-java linenums">package com.fulfilment.application.monolith.health;
+
+import jakarta.inject.Inject;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import java.util.Map;
+
+/**
+ * Health check REST endpoint for the Warehouse Management System
+ */
+@Path(&quot;/health&quot;)
+@Produces(MediaType.APPLICATION_JSON)
+<span class="fc" id="L17">public class HealthResource {</span>
+
+    @Inject
+    WarehouseSystemHealthCheck healthCheck;
+
+    @GET
+    public Response getHealth() {
+<span class="pc bpc" id="L24" title="1 of 2 branches missed.">        if (healthCheck.isHealthy()) {</span>
+<span class="fc" id="L25">            return Response.ok(healthCheck.getHealthStatus()).build();</span>
+        } else {
+<span class="nc" id="L27">            return Response.status(Response.Status.SERVICE_UNAVAILABLE)</span>
+<span class="nc" id="L28">                    .entity(healthCheck.getHealthStatus())</span>
+<span class="nc" id="L29">                    .build();</span>
+        }
+    }
+
+    @GET
+    @Path(&quot;/live&quot;)
+    public Response liveness() {
+<span class="fc" id="L36">        return Response.ok(Map.of(&quot;status&quot;, &quot;UP&quot;)).build();</span>
+    }
+
+    @GET
+    @Path(&quot;/ready&quot;)
+    public Response readiness() {
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">        if (healthCheck.isHealthy()) {</span>
+<span class="fc" id="L43">            return Response.ok(Map.of(&quot;status&quot;, &quot;READY&quot;)).build();</span>
+        } else {
+<span class="nc" id="L45">            return Response.status(Response.Status.SERVICE_UNAVAILABLE)</span>
+<span class="nc" id="L46">                    .entity(Map.of(&quot;status&quot;, &quot;NOT_READY&quot;))</span>
+<span class="nc" id="L47">                    .build();</span>
+        }
+    }
+
+    @GET
+    @Path(&quot;/metrics&quot;)
+    public Response getMetrics() {
+<span class="fc" id="L54">        return Response.ok(healthCheck.getHealthStatus()).build();</span>
+    }
+
+    @GET
+    @Path(&quot;/check/{component}&quot;)
+    public Response checkComponent(@PathParam(&quot;component&quot;) String component) {
+<span class="fc" id="L60">        Map&lt;String, Object&gt; health = healthCheck.getHealthStatus();</span>
+        
+<span class="fc bfc" id="L62" title="All 4 branches covered.">        switch (component.toLowerCase()) {</span>
+            case &quot;memory&quot;:
+<span class="fc" id="L64">                return Response.ok(health.get(&quot;memory&quot;)).build();</span>
+            case &quot;cpu&quot;:
+<span class="fc" id="L66">                return Response.ok(health.get(&quot;cpu&quot;)).build();</span>
+            case &quot;business&quot;:
+<span class="fc" id="L68">                return Response.ok(health.get(&quot;business_metrics&quot;)).build();</span>
+            default:
+<span class="fc" id="L70">                return Response.status(Response.Status.NOT_FOUND)</span>
+<span class="fc" id="L71">                        .entity(Map.of(&quot;error&quot;, &quot;Component not found: &quot; + component))</span>
+<span class="fc" id="L72">                        .build();</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

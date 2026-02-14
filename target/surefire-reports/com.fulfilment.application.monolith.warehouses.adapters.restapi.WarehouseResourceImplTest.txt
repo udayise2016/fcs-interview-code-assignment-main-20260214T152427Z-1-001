@@ -1,4 +1,18 @@
 -------------------------------------------------------------------------------
 Test set: com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceImplTest
 -------------------------------------------------------------------------------
-Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.127 s -- in com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceImplTest
+Tests run: 11, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.158 s <<< FAILURE! -- in com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceImplTest
+com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceImplTest.testReplaceTheCurrentActiveWarehouse -- Time elapsed: 0.015 s <<< ERROR!
+java.lang.IllegalArgumentException: New warehouse stock (100) must match the stock of the previous warehouse (50)
+	at com.fulfilment.application.monolith.warehouses.domain.usecases.ReplaceWarehouseUseCase.validateReplacementConstraints(ReplaceWarehouseUseCase.java:82)
+	at com.fulfilment.application.monolith.warehouses.domain.usecases.ReplaceWarehouseUseCase.replace(ReplaceWarehouseUseCase.java:61)
+	at com.fulfilment.application.monolith.warehouses.domain.usecases.ReplaceWarehouseUseCase_ClientProxy.replace(Unknown Source)
+	at com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceImpl.replaceTheCurrentActiveWarehouse(WarehouseResourceImpl.java:59)
+	at com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceImpl_ClientProxy.replaceTheCurrentActiveWarehouse(Unknown Source)
+	at com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceImplTest.testReplaceTheCurrentActiveWarehouse(WarehouseResourceImplTest.java:166)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.quarkus.test.junit.QuarkusTestExtension.runExtensionMethod(QuarkusTestExtension.java:973)
+	at io.quarkus.test.junit.QuarkusTestExtension.interceptTestMethod(QuarkusTestExtension.java:823)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

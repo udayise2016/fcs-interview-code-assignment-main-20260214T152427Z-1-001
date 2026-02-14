@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WarehouseSystemHealthCheck.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java-code-assignment</a> &gt; <a href="index.source.html" class="el_package">com.fulfilment.application.monolith.health</a> &gt; <span class="el_source">WarehouseSystemHealthCheck.java</span></div><h1>WarehouseSystemHealthCheck.java</h1><pre class="source lang-java linenums">package com.fulfilment.application.monolith.health;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryMXBean;
+import java.lang.management.OperatingSystemMXBean;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Simple health check for the Warehouse Management System
+ */
+@ApplicationScoped
+<span class="fc" id="L16">public class WarehouseSystemHealthCheck {</span>
+
+<span class="fc" id="L18">    private final Instant startTime = Instant.now();</span>
+
+    public Map&lt;String, Object&gt; getHealthStatus() {
+<span class="fc" id="L21">        Map&lt;String, Object&gt; health = new HashMap&lt;&gt;();</span>
+        
+        // Application status
+<span class="fc" id="L24">        health.put(&quot;status&quot;, &quot;UP&quot;);</span>
+<span class="fc" id="L25">        health.put(&quot;uptime&quot;, Duration.between(startTime, Instant.now()).toString());</span>
+<span class="fc" id="L26">        health.put(&quot;version&quot;, getApplicationVersion());</span>
+        
+        // System resources
+<span class="fc" id="L29">        health.put(&quot;memory&quot;, getMemoryInfo());</span>
+<span class="fc" id="L30">        health.put(&quot;cpu&quot;, getCpuInfo());</span>
+        
+        // Business metrics
+<span class="fc" id="L33">        health.put(&quot;business_metrics&quot;, getBusinessMetrics());</span>
+        
+<span class="fc" id="L35">        return health;</span>
+    }
+
+    public boolean isHealthy() {
+        // Basic health checks
+<span class="pc bpc" id="L40" title="2 of 4 branches missed.">        return isMemoryHealthy() &amp;&amp; isCpuHealthy();</span>
+    }
+
+    private Map&lt;String, Object&gt; getMemoryInfo() {
+<span class="fc" id="L44">        MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();</span>
+<span class="fc" id="L45">        long usedHeap = memoryBean.getHeapMemoryUsage().getUsed();</span>
+<span class="fc" id="L46">        long maxHeap = memoryBean.getHeapMemoryUsage().getMax();</span>
+<span class="fc" id="L47">        long usedNonHeap = memoryBean.getNonHeapMemoryUsage().getUsed();</span>
+<span class="fc" id="L48">        long maxNonHeap = memoryBean.getNonHeapMemoryUsage().getMax();</span>
+        
+<span class="fc" id="L50">        return Map.of(</span>
+<span class="fc" id="L51">            &quot;heap_used&quot;, usedHeap,</span>
+<span class="fc" id="L52">            &quot;heap_max&quot;, maxHeap,</span>
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">            &quot;heap_usage_percent&quot;, maxHeap &gt; 0 ? (double) usedHeap / maxHeap * 100 : 0,</span>
+<span class="fc" id="L54">            &quot;non_heap_used&quot;, usedNonHeap,</span>
+<span class="fc" id="L55">            &quot;non_heap_max&quot;, maxNonHeap,</span>
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">            &quot;non_heap_usage_percent&quot;, maxNonHeap &gt; 0 ? (double) usedNonHeap / maxNonHeap * 100 : 0</span>
+        );
+    }
+
+    private Map&lt;String, Object&gt; getCpuInfo() {
+<span class="fc" id="L61">        OperatingSystemMXBean osBean = ManagementFactory.getOperatingSystemMXBean();</span>
+<span class="fc" id="L62">        int availableProcessors = osBean.getAvailableProcessors();</span>
+<span class="fc" id="L63">        double systemLoadAverage = osBean.getSystemLoadAverage();</span>
+        
+<span class="fc" id="L65">        return Map.of(</span>
+<span class="fc" id="L66">            &quot;available_processors&quot;, availableProcessors,</span>
+<span class="fc" id="L67">            &quot;system_load_average&quot;, systemLoadAverage</span>
+        );
+    }
+
+    private int getActiveWarehouseCount() {
+        // Query database for active warehouses
+<span class="fc" id="L73">        return 10; // Placeholder - implement actual query</span>
+    }
+
+    private int getPendingOperationCount() {
+        // Get pending operations count
+<span class="fc" id="L78">        return 5; // Placeholder - implement actual query</span>
+    }
+
+    private double getErrorRate() {
+        // Calculate error rate from logs or metrics
+<span class="fc" id="L83">        return 0.01; // Placeholder - implement actual calculation</span>
+    }
+
+    private double getAverageResponseTime() {
+        // Get average response time from metrics
+<span class="fc" id="L88">        return 150.5; // Placeholder - implement actual calculation</span>
+    }
+
+    public Map&lt;String, Object&gt; getBusinessMetrics() {
+<span class="fc" id="L92">        Map&lt;String, Object&gt; metrics = new HashMap&lt;&gt;();</span>
+
+<span class="fc" id="L94">        metrics.put(&quot;active_warehouses&quot;, getActiveWarehouseCount());</span>
+<span class="fc" id="L95">        metrics.put(&quot;pending_operations&quot;, getPendingOperationCount());</span>
+<span class="fc" id="L96">        metrics.put(&quot;error_rate&quot;, getErrorRate());</span>
+<span class="fc" id="L97">        metrics.put(&quot;response_time&quot;, getAverageResponseTime());</span>
+
+<span class="fc" id="L99">        return metrics;</span>
+    }
+
+    private boolean isMemoryHealthy() {
+<span class="fc" id="L103">        MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();</span>
+<span class="fc" id="L104">        long usedHeap = memoryBean.getHeapMemoryUsage().getUsed();</span>
+<span class="fc" id="L105">        long maxHeap = memoryBean.getHeapMemoryUsage().getMax();</span>
+        
+        // Consider unhealthy if heap usage is above 90%
+<span class="pc bpc" id="L108" title="2 of 4 branches missed.">        return maxHeap &gt; 0 &amp;&amp; (double) usedHeap / maxHeap &lt; 0.9;</span>
+    }
+
+    private boolean isCpuHealthy() {
+<span class="fc" id="L112">        OperatingSystemMXBean osBean = ManagementFactory.getOperatingSystemMXBean();</span>
+<span class="fc" id="L113">        double systemLoadAverage = osBean.getSystemLoadAverage();</span>
+<span class="fc" id="L114">        int availableProcessors = osBean.getAvailableProcessors();</span>
+        
+        // Consider unhealthy if system load is more than 2x available processors
+<span class="pc bpc" id="L117" title="1 of 2 branches missed.">        return systemLoadAverage &lt;= availableProcessors * 2;</span>
+    }
+
+    public Map&lt;String, Object&gt; getSystemMetrics() {
+<span class="fc" id="L121">        Map&lt;String, Object&gt; metrics = new HashMap&lt;&gt;();</span>
+        
+        // Memory metrics
+<span class="fc" id="L124">        MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();</span>
+<span class="fc" id="L125">        long usedHeap = memoryBean.getHeapMemoryUsage().getUsed();</span>
+<span class="fc" id="L126">        long maxHeap = memoryBean.getHeapMemoryUsage().getMax();</span>
+<span class="fc" id="L127">        long usedNonHeap = memoryBean.getNonHeapMemoryUsage().getUsed();</span>
+<span class="fc" id="L128">        long maxNonHeap = memoryBean.getNonHeapMemoryUsage().getMax();</span>
+        
+<span class="fc" id="L130">        metrics.put(&quot;heap_used&quot;, usedHeap);</span>
+<span class="fc" id="L131">        metrics.put(&quot;heap_max&quot;, maxHeap);</span>
+<span class="pc bpc" id="L132" title="1 of 2 branches missed.">        metrics.put(&quot;heap_usage_percent&quot;, maxHeap &gt; 0 ? (double) usedHeap / maxHeap * 100 : 0);</span>
+<span class="fc" id="L133">        metrics.put(&quot;non_heap_used&quot;, usedNonHeap);</span>
+<span class="fc" id="L134">        metrics.put(&quot;non_heap_max&quot;, maxNonHeap);</span>
+<span class="pc bpc" id="L135" title="1 of 2 branches missed.">        metrics.put(&quot;non_heap_usage_percent&quot;, maxNonHeap &gt; 0 ? (double) usedNonHeap / maxNonHeap * 100 : 0);</span>
+        
+        // CPU metrics
+<span class="fc" id="L138">        OperatingSystemMXBean osBean = ManagementFactory.getOperatingSystemMXBean();</span>
+<span class="fc" id="L139">        int processors = osBean.getAvailableProcessors();</span>
+<span class="fc" id="L140">        double systemLoad = osBean.getSystemLoadAverage();</span>
+        
+<span class="fc" id="L142">        metrics.put(&quot;processors&quot;, processors);</span>
+<span class="fc" id="L143">        metrics.put(&quot;system_load_average&quot;, systemLoad);</span>
+        
+<span class="fc" id="L145">        return metrics;</span>
+    }
+
+    public String getApplicationVersion() {
+        // Get application version from manifest or properties
+<span class="fc" id="L150">        return &quot;1.0.0&quot;; // This should be dynamically retrieved</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
