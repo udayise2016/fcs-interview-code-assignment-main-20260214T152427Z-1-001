@@ -37,7 +37,7 @@ jobs:
           cache: maven
 
       - name: Run Checkstyle
-        run: ./mvnw checkstyle:check
+        run: ../mvnw checkstyle:checkstyle
 
       - name: Run SpotBugs
         run: ./mvnw spotbugs:check
