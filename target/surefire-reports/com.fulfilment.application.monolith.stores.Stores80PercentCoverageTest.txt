@@ -1,0 +1,74 @@
+-------------------------------------------------------------------------------
+Test set: com.fulfilment.application.monolith.stores.Stores80PercentCoverageTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 2, Errors: 3, Skipped: 0, Time elapsed: 0.114 s <<< FAILURE! -- in com.fulfilment.application.monolith.stores.Stores80PercentCoverageTest
+com.fulfilment.application.monolith.stores.Stores80PercentCoverageTest.testStoreResourceErrorMapperCompleteCoverage -- Time elapsed: 0.010 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.fasterxml.jackson.databind.ObjectMapper.createObjectNode()" because "this.objectMapper" is null
+	at com.fulfilment.application.monolith.stores.StoreResource$ErrorMapper.toResponse(StoreResource.java:146)
+	at com.fulfilment.application.monolith.stores.Stores80PercentCoverageTest.testStoreResourceErrorMapperCompleteCoverage(Stores80PercentCoverageTest.java:150)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.quarkus.test.junit.QuarkusTestExtension.runExtensionMethod(QuarkusTestExtension.java:973)
+	at io.quarkus.test.junit.QuarkusTestExtension.interceptTestMethod(QuarkusTestExtension.java:823)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	Suppressed: jakarta.ws.rs.WebApplicationException: Web Exception
+		at com.fulfilment.application.monolith.stores.Stores80PercentCoverageTest.testStoreResourceErrorMapperCompleteCoverage(Stores80PercentCoverageTest.java:149)
+		... 5 more
+
+com.fulfilment.application.monolith.stores.Stores80PercentCoverageTest.testStorePersistenceCompleteCoverage -- Time elapsed: 0.006 s <<< ERROR!
+jakarta.persistence.TransactionRequiredException: Transaction is not active, consider adding @Transactional to your method to automatically activate one.
+	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.persist(TransactionScopedSession.java:144)
+	at org.hibernate.engine.spi.SessionLazyDelegator.persist(SessionLazyDelegator.java:282)
+	at org.hibernate.Session_OpdLahisOZ9nWRPXMsEFQmQU03A_Synthetic_ClientProxy.persist(Unknown Source)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:105)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:100)
+	at io.quarkus.hibernate.orm.panache.PanacheEntityBase.persist(PanacheEntityBase.java:65)
+	at com.fulfilment.application.monolith.stores.Stores80PercentCoverageTest.testStorePersistenceCompleteCoverage(Stores80PercentCoverageTest.java:216)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.quarkus.test.junit.QuarkusTestExtension.runExtensionMethod(QuarkusTestExtension.java:973)
+	at io.quarkus.test.junit.QuarkusTestExtension.interceptTestMethod(QuarkusTestExtension.java:823)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.fulfilment.application.monolith.stores.Stores80PercentCoverageTest.testStoreTransactionEventListenerCompleteCoverage -- Time elapsed: 0.005 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected no exception, but got: Cannot invoke "com.fulfilment.application.monolith.stores.LegacyStoreManagerGateway.createStoreOnLegacySystem(com.fulfilment.application.monolith.stores.Store)" because "this.legacyStoreManagerGateway" is null
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
+	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
+	at com.fulfilment.application.monolith.stores.Stores80PercentCoverageTest.assertDoesNotThrow(Stores80PercentCoverageTest.java:332)
+	at com.fulfilment.application.monolith.stores.Stores80PercentCoverageTest.testStoreTransactionEventListenerCompleteCoverage(Stores80PercentCoverageTest.java:188)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.quarkus.test.junit.QuarkusTestExtension.runExtensionMethod(QuarkusTestExtension.java:973)
+	at io.quarkus.test.junit.QuarkusTestExtension.interceptTestMethod(QuarkusTestExtension.java:823)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.fulfilment.application.monolith.stores.Stores80PercentCoverageTest.testStoreEntityCompleteCoverage -- Time elapsed: 0.007 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: com.fulfilment.application.monolith.stores.Store@1de315e8<Store<null>> but was: com.fulfilment.application.monolith.stores.Store@4a85e9e1<Store<null>>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.fulfilment.application.monolith.stores.Stores80PercentCoverageTest.testStoreEntityCompleteCoverage(Stores80PercentCoverageTest.java:133)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.quarkus.test.junit.QuarkusTestExtension.runExtensionMethod(QuarkusTestExtension.java:973)
+	at io.quarkus.test.junit.QuarkusTestExtension.interceptTestMethod(QuarkusTestExtension.java:823)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.fulfilment.application.monolith.stores.Stores80PercentCoverageTest.testStoreEdgeCasesCompleteCoverage -- Time elapsed: 0.003 s <<< ERROR!
+jakarta.persistence.TransactionRequiredException: Transaction is not active, consider adding @Transactional to your method to automatically activate one.
+	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.persist(TransactionScopedSession.java:144)
+	at org.hibernate.engine.spi.SessionLazyDelegator.persist(SessionLazyDelegator.java:282)
+	at org.hibernate.Session_OpdLahisOZ9nWRPXMsEFQmQU03A_Synthetic_ClientProxy.persist(Unknown Source)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:105)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:100)
+	at io.quarkus.hibernate.orm.panache.PanacheEntityBase.persist(PanacheEntityBase.java:65)
+	at com.fulfilment.application.monolith.stores.Stores80PercentCoverageTest.testStoreEdgeCasesCompleteCoverage(Stores80PercentCoverageTest.java:254)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.quarkus.test.junit.QuarkusTestExtension.runExtensionMethod(QuarkusTestExtension.java:973)
+	at io.quarkus.test.junit.QuarkusTestExtension.interceptTestMethod(QuarkusTestExtension.java:823)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

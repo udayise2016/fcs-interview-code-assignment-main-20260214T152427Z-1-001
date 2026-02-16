@@ -8,7 +8,7 @@ import java.nio.file.Path;
  * Gateway for interacting with the legacy store manager system.
  */
 @ApplicationScoped
-<span class="nc" id="L11">public class LegacyStoreManagerGateway {</span>
+<span class="fc" id="L11">public class LegacyStoreManagerGateway {</span>
 
   /**
    * Creates a store on the legacy system.
@@ -18,8 +18,8 @@ import java.nio.file.Path;
   public void createStoreOnLegacySystem(final Store store) {
     // just to emulate as this would send this to a legacy system,
     // let's write a temp file with the
-<span class="nc" id="L21">    writeToFile(store);</span>
-<span class="nc" id="L22">  }</span>
+<span class="fc" id="L21">    writeToFile(store);</span>
+<span class="fc" id="L22">  }</span>
 
   /**
    * Updates a store on the legacy system.
@@ -29,8 +29,8 @@ import java.nio.file.Path;
   public void updateStoreOnLegacySystem(final Store store) {
     // just to emulate as this would send this to a legacy system,
     // let's write a temp file with the
-<span class="nc" id="L32">    writeToFile(store);</span>
-<span class="nc" id="L33">  }</span>
+<span class="fc" id="L32">    writeToFile(store);</span>
+<span class="fc" id="L33">  }</span>
 
   /**
    * Writes store information to a temporary file.
@@ -42,31 +42,31 @@ import java.nio.file.Path;
       // Step 1: Create a temporary file
       Path tempFile;
 
-<span class="nc" id="L45">      tempFile = Files.createTempFile(store.getName(), &quot;.txt&quot;);</span>
+<span class="fc" id="L45">      tempFile = Files.createTempFile(store.getName(), &quot;.txt&quot;);</span>
 
-<span class="nc" id="L47">      System.out.println(&quot;Temporary file created at: &quot; + tempFile.toString());</span>
+<span class="fc" id="L47">      System.out.println(&quot;Temporary file created at: &quot; + tempFile.toString());</span>
 
       // Step 2: Write data to the temporary file
-<span class="nc" id="L50">      String content =</span>
+<span class="fc" id="L50">      String content =</span>
           &quot;Store created. [ name =&quot;
-<span class="nc" id="L52">              + store.getName()</span>
+<span class="fc" id="L52">              + store.getName()</span>
               + &quot; ] [ items on stock =&quot;
-<span class="nc" id="L54">              + store.getQuantityProductsInStock()</span>
+<span class="fc" id="L54">              + store.getQuantityProductsInStock()</span>
               + &quot;]&quot;;
-<span class="nc" id="L56">      Files.write(tempFile, content.getBytes());</span>
-<span class="nc" id="L57">      System.out.println(&quot;Data written to temporary file.&quot;);</span>
+<span class="fc" id="L56">      Files.write(tempFile, content.getBytes());</span>
+<span class="fc" id="L57">      System.out.println(&quot;Data written to temporary file.&quot;);</span>
 
       // Step 3: Optionally, read the data back to verify
-<span class="nc" id="L60">      String readContent = new String(Files.readAllBytes(tempFile));</span>
-<span class="nc" id="L61">      System.out.println(&quot;Data read from temporary file: &quot; + readContent);</span>
+<span class="fc" id="L60">      String readContent = new String(Files.readAllBytes(tempFile));</span>
+<span class="fc" id="L61">      System.out.println(&quot;Data read from temporary file: &quot; + readContent);</span>
 
       // Step 4: Delete the temporary file when done
-<span class="nc" id="L64">      Files.delete(tempFile);</span>
-<span class="nc" id="L65">      System.out.println(&quot;Temporary file deleted.&quot;);</span>
+<span class="fc" id="L64">      Files.delete(tempFile);</span>
+<span class="fc" id="L65">      System.out.println(&quot;Temporary file deleted.&quot;);</span>
 
-<span class="nc" id="L67">    } catch (Exception e) {</span>
-<span class="nc" id="L68">      e.printStackTrace();</span>
-<span class="nc" id="L69">    }</span>
-<span class="nc" id="L70">  }</span>
+<span class="fc" id="L67">    } catch (Exception e) {</span>
+<span class="fc" id="L68">      e.printStackTrace();</span>
+<span class="fc" id="L69">    }</span>
+<span class="fc" id="L70">  }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CreateFulfillmentUseCase.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java-code-assignment</a> &gt; <a href="index.source.html" class="el_package">com.fulfilment.application.monolith.fulfillment.domain.usecases</a> &gt; <span class="el_source">CreateFulfillmentUseCase.java</span></div><h1>CreateFulfillmentUseCase.java</h1><pre class="source lang-java linenums">package com.fulfilment.application.monolith.fulfillment.domain.usecases;
+
+import com.fulfilment.application.monolith.fulfillment.FulfillmentAssociation;
+import com.fulfilment.application.monolith.fulfillment.FulfillmentService;
+import com.fulfilment.application.monolith.products.Product;
+import com.fulfilment.application.monolith.stores.Store;
+import com.fulfilment.application.monolith.warehouses.adapters.database.DbWarehouse;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+
+@ApplicationScoped
+<span class="fc" id="L12">public class CreateFulfillmentUseCase {</span>
+
+    @Inject
+    FulfillmentService fulfillmentService;
+
+    public FulfillmentAssociation execute(Product product, DbWarehouse warehouse, Store store, Integer allocatedStock, Integer maxCapacity) {
+        // Validate business rules
+<span class="fc" id="L19">        validateBusinessRules(product, warehouse, store, allocatedStock, maxCapacity);</span>
+
+<span class="fc" id="L21">        return fulfillmentService.createFulfillmentAssociation(product, warehouse, store, allocatedStock, maxCapacity);</span>
+    }
+
+    private void validateBusinessRules(Product product, DbWarehouse warehouse, Store store, Integer allocatedStock, Integer maxCapacity) {
+        // Validate allocated stock doesn't exceed warehouse capacity
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        if (allocatedStock &gt; warehouse.capacity) {</span>
+<span class="fc" id="L27">            throw new IllegalArgumentException(&quot;Allocated stock (&quot; + allocatedStock + </span>
+                &quot;) cannot exceed warehouse capacity (&quot; + warehouse.capacity + &quot;)&quot;);
+        }
+
+        // Validate allocated stock doesn't exceed max capacity
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (allocatedStock &gt; maxCapacity) {</span>
+<span class="fc" id="L33">            throw new IllegalArgumentException(&quot;Allocated stock (&quot; + allocatedStock + </span>
+                &quot;) cannot exceed max capacity (&quot; + maxCapacity + &quot;)&quot;);
+        }
+
+        // Validate max capacity doesn't exceed warehouse capacity
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        if (maxCapacity &gt; warehouse.capacity) {</span>
+<span class="fc" id="L39">            throw new IllegalArgumentException(&quot;Max capacity (&quot; + maxCapacity + </span>
+                &quot;) cannot exceed warehouse capacity (&quot; + warehouse.capacity + &quot;)&quot;);
+        }
+
+        // Validate stock availability
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        if (product.stock &lt; allocatedStock) {</span>
+<span class="fc" id="L45">            throw new IllegalArgumentException(&quot;Product stock (&quot; + product.stock + </span>
+                &quot;) is insufficient for allocation (&quot; + allocatedStock + &quot;)&quot;);
+        }
+
+        // Validate warehouse stock availability
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (warehouse.stock &lt; allocatedStock) {</span>
+<span class="fc" id="L51">            throw new IllegalArgumentException(&quot;Warehouse stock (&quot; + warehouse.stock + </span>
+                &quot;) is insufficient for allocation (&quot; + allocatedStock + &quot;)&quot;);
+        }
+<span class="fc" id="L54">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
