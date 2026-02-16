@@ -1,0 +1,122 @@
+-------------------------------------------------------------------------------
+Test set: com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest
+-------------------------------------------------------------------------------
+Tests run: 15, Failures: 0, Errors: 8, Skipped: 0, Time elapsed: 0.110 s <<< FAILURE! -- in com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest
+com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceErrorMapper -- Time elapsed: 0.007 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.fasterxml.jackson.databind.ObjectMapper.createObjectNode()" because "this.objectMapper" is null
+	at com.fulfilment.application.monolith.stores.StoreResource$ErrorMapper.toResponse(StoreResource.java:146)
+	at com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceErrorMapper(StoreResourceAdditionalTest.java:209)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.quarkus.test.junit.QuarkusTestExtension.runExtensionMethod(QuarkusTestExtension.java:973)
+	at io.quarkus.test.junit.QuarkusTestExtension.interceptTestMethod(QuarkusTestExtension.java:823)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	Suppressed: jakarta.ws.rs.WebApplicationException: Test error
+		at com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceErrorMapper(StoreResourceAdditionalTest.java:206)
+		... 5 more
+
+com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceDelete -- Time elapsed: 0.005 s <<< ERROR!
+jakarta.persistence.TransactionRequiredException: Transaction is not active, consider adding @Transactional to your method to automatically activate one.
+	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.persist(TransactionScopedSession.java:144)
+	at org.hibernate.engine.spi.SessionLazyDelegator.persist(SessionLazyDelegator.java:282)
+	at org.hibernate.Session_OpdLahisOZ9nWRPXMsEFQmQU03A_Synthetic_ClientProxy.persist(Unknown Source)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:105)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:100)
+	at io.quarkus.hibernate.orm.panache.PanacheEntityBase.persist(PanacheEntityBase.java:65)
+	at com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceDelete(StoreResourceAdditionalTest.java:184)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.quarkus.test.junit.QuarkusTestExtension.runExtensionMethod(QuarkusTestExtension.java:973)
+	at io.quarkus.test.junit.QuarkusTestExtension.interceptTestMethod(QuarkusTestExtension.java:823)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceGetAll -- Time elapsed: 0.003 s <<< ERROR!
+jakarta.persistence.TransactionRequiredException: Transaction is not active, consider adding @Transactional to your method to automatically activate one.
+	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.persist(TransactionScopedSession.java:144)
+	at org.hibernate.engine.spi.SessionLazyDelegator.persist(SessionLazyDelegator.java:282)
+	at org.hibernate.Session_OpdLahisOZ9nWRPXMsEFQmQU03A_Synthetic_ClientProxy.persist(Unknown Source)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:105)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:100)
+	at io.quarkus.hibernate.orm.panache.PanacheEntityBase.persist(PanacheEntityBase.java:65)
+	at com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceGetAll(StoreResourceAdditionalTest.java:28)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.quarkus.test.junit.QuarkusTestExtension.runExtensionMethod(QuarkusTestExtension.java:973)
+	at io.quarkus.test.junit.QuarkusTestExtension.interceptTestMethod(QuarkusTestExtension.java:823)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceUpdate -- Time elapsed: 0.003 s <<< ERROR!
+jakarta.persistence.TransactionRequiredException: Transaction is not active, consider adding @Transactional to your method to automatically activate one.
+	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.persist(TransactionScopedSession.java:144)
+	at org.hibernate.engine.spi.SessionLazyDelegator.persist(SessionLazyDelegator.java:282)
+	at org.hibernate.Session_OpdLahisOZ9nWRPXMsEFQmQU03A_Synthetic_ClientProxy.persist(Unknown Source)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:105)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:100)
+	at io.quarkus.hibernate.orm.panache.PanacheEntityBase.persist(PanacheEntityBase.java:65)
+	at com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceUpdate(StoreResourceAdditionalTest.java:98)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.quarkus.test.junit.QuarkusTestExtension.runExtensionMethod(QuarkusTestExtension.java:973)
+	at io.quarkus.test.junit.QuarkusTestExtension.interceptTestMethod(QuarkusTestExtension.java:823)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourcePatch -- Time elapsed: 0.003 s <<< ERROR!
+jakarta.persistence.TransactionRequiredException: Transaction is not active, consider adding @Transactional to your method to automatically activate one.
+	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.persist(TransactionScopedSession.java:144)
+	at org.hibernate.engine.spi.SessionLazyDelegator.persist(SessionLazyDelegator.java:282)
+	at org.hibernate.Session_OpdLahisOZ9nWRPXMsEFQmQU03A_Synthetic_ClientProxy.persist(Unknown Source)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:105)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:100)
+	at io.quarkus.hibernate.orm.panache.PanacheEntityBase.persist(PanacheEntityBase.java:65)
+	at com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourcePatch(StoreResourceAdditionalTest.java:141)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.quarkus.test.junit.QuarkusTestExtension.runExtensionMethod(QuarkusTestExtension.java:973)
+	at io.quarkus.test.junit.QuarkusTestExtension.interceptTestMethod(QuarkusTestExtension.java:823)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceGetSingle -- Time elapsed: 0.006 s <<< ERROR!
+jakarta.persistence.TransactionRequiredException: Transaction is not active, consider adding @Transactional to your method to automatically activate one.
+	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.persist(TransactionScopedSession.java:144)
+	at org.hibernate.engine.spi.SessionLazyDelegator.persist(SessionLazyDelegator.java:282)
+	at org.hibernate.Session_OpdLahisOZ9nWRPXMsEFQmQU03A_Synthetic_ClientProxy.persist(Unknown Source)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:105)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:100)
+	at io.quarkus.hibernate.orm.panache.PanacheEntityBase.persist(PanacheEntityBase.java:65)
+	at com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceGetSingle(StoreResourceAdditionalTest.java:52)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.quarkus.test.junit.QuarkusTestExtension.runExtensionMethod(QuarkusTestExtension.java:973)
+	at io.quarkus.test.junit.QuarkusTestExtension.interceptTestMethod(QuarkusTestExtension.java:823)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceUpdateNullName -- Time elapsed: 0.003 s <<< ERROR!
+jakarta.persistence.TransactionRequiredException: Transaction is not active, consider adding @Transactional to your method to automatically activate one.
+	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.persist(TransactionScopedSession.java:144)
+	at org.hibernate.engine.spi.SessionLazyDelegator.persist(SessionLazyDelegator.java:282)
+	at org.hibernate.Session_OpdLahisOZ9nWRPXMsEFQmQU03A_Synthetic_ClientProxy.persist(Unknown Source)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:105)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:100)
+	at io.quarkus.hibernate.orm.panache.PanacheEntityBase.persist(PanacheEntityBase.java:65)
+	at com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceUpdateNullName(StoreResourceAdditionalTest.java:124)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.quarkus.test.junit.QuarkusTestExtension.runExtensionMethod(QuarkusTestExtension.java:973)
+	at io.quarkus.test.junit.QuarkusTestExtension.interceptTestMethod(QuarkusTestExtension.java:823)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourcePatchNullName -- Time elapsed: 0.002 s <<< ERROR!
+jakarta.persistence.TransactionRequiredException: Transaction is not active, consider adding @Transactional to your method to automatically activate one.
+	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.persist(TransactionScopedSession.java:144)
+	at org.hibernate.engine.spi.SessionLazyDelegator.persist(SessionLazyDelegator.java:282)
+	at org.hibernate.Session_OpdLahisOZ9nWRPXMsEFQmQU03A_Synthetic_ClientProxy.persist(Unknown Source)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:105)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:100)
+	at io.quarkus.hibernate.orm.panache.PanacheEntityBase.persist(PanacheEntityBase.java:65)
+	at com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourcePatchNullName(StoreResourceAdditionalTest.java:167)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.quarkus.test.junit.QuarkusTestExtension.runExtensionMethod(QuarkusTestExtension.java:973)
+	at io.quarkus.test.junit.QuarkusTestExtension.interceptTestMethod(QuarkusTestExtension.java:823)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

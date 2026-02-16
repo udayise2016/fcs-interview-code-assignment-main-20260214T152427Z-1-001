@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FulfillmentRepository.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java-code-assignment</a> &gt; <a href="index.source.html" class="el_package">com.fulfilment.application.monolith.fulfillment</a> &gt; <span class="el_source">FulfillmentRepository.java</span></div><h1>FulfillmentRepository.java</h1><pre class="source lang-java linenums">package com.fulfilment.application.monolith.fulfillment;
+
+import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import jakarta.enterprise.context.ApplicationScoped;
+
+import java.util.List;
+
+@ApplicationScoped
+<span class="nc" id="L9">public class FulfillmentRepository implements PanacheRepository&lt;FulfillmentAssociation&gt; {</span>
+
+    public List&lt;FulfillmentAssociation&gt; findByProduct(Long productId) {
+<span class="nc" id="L12">        return find(&quot;product.id&quot;, productId).list();</span>
+    }
+
+    public List&lt;FulfillmentAssociation&gt; findByWarehouse(String warehouseBusinessUnitCode) {
+<span class="nc" id="L16">        return find(&quot;warehouse.businessUnitCode&quot;, warehouseBusinessUnitCode).list();</span>
+    }
+
+    public List&lt;FulfillmentAssociation&gt; findByStore(Long storeId) {
+<span class="nc" id="L20">        return find(&quot;store.id&quot;, storeId).list();</span>
+    }
+
+    public List&lt;FulfillmentAssociation&gt; findByProductAndStore(Long productId, Long storeId) {
+<span class="nc" id="L24">        return find(&quot;product.id = ?1 and store.id = ?2&quot;, productId, storeId).list();</span>
+    }
+
+    public List&lt;FulfillmentAssociation&gt; findByWarehouseAndStore(String warehouseBusinessUnitCode, Long storeId) {
+<span class="nc" id="L28">        return find(&quot;warehouse.businessUnitCode = ?1 and store.id = ?2&quot;, warehouseBusinessUnitCode, storeId).list();</span>
+    }
+
+    public long countByWarehouse(String warehouseBusinessUnitCode) {
+<span class="nc" id="L32">        return count(&quot;warehouse.businessUnitCode&quot;, warehouseBusinessUnitCode);</span>
+    }
+
+    public long countByProductAndStore(Long productId, Long storeId) {
+<span class="nc" id="L36">        return count(&quot;product.id = ?1 and store.id = ?2&quot;, productId, storeId);</span>
+    }
+
+    public long countByStore(Long storeId) {
+<span class="nc" id="L40">        return count(&quot;store.id&quot;, storeId);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

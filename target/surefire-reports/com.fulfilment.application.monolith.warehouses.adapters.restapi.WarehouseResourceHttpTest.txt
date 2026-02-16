@@ -1,14 +1,13 @@
 -------------------------------------------------------------------------------
 Test set: com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceHttpTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.189 s <<< FAILURE! -- in com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceHttpTest
-com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceHttpTest.testWarehouseEndpointsOverHttp -- Time elapsed: 0.172 s <<< FAILURE!
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.102 s <<< FAILURE! -- in com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceHttpTest
+com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceHttpTest.testWarehouseEndpointsOverHttp -- Time elapsed: 0.098 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <204> but was <400>.
 
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor116.newInstance(Unknown Source)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
@@ -19,7 +18,7 @@ Expected status code <204> but was <400>.
 	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure$validate$1.call(Unknown Source)
 	at io.restassured.internal.ResponseSpecificationImpl.validateResponseIfRequired(ResponseSpecificationImpl.groovy:696)
 	at io.restassured.internal.ResponseSpecificationImpl.this$2$validateResponseIfRequired(ResponseSpecificationImpl.groovy)
-	at jdk.internal.reflect.GeneratedMethodAccessor122.invoke(Unknown Source)
+	at jdk.internal.reflect.GeneratedMethodAccessor180.invoke(Unknown Source)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.codehaus.groovy.runtime.callsite.PlainObjectMetaMethodSite.doInvoke(PlainObjectMetaMethodSite.java:43)

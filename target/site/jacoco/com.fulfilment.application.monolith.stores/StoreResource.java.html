@@ -27,12 +27,12 @@ import org.jboss.logging.Logger;
 @ApplicationScoped
 @Produces(&quot;application/json&quot;)
 @Consumes(&quot;application/json&quot;)
-<span class="nc" id="L30">public class StoreResource {</span>
+<span class="fc" id="L30">public class StoreResource {</span>
 
   @Inject LegacyStoreManagerGateway legacyStoreManagerGateway;
   @Inject Event&lt;StoreTransactionEvent&gt; storeTransactionEvent;
 
-<span class="nc" id="L35">  private static final Logger LOGGER = Logger.getLogger(StoreResource.class.getName());</span>
+<span class="fc" id="L35">  private static final Logger LOGGER = Logger.getLogger(StoreResource.class.getName());</span>
 
   @GET
   public List&lt;Store&gt; get() {
@@ -52,8 +52,8 @@ import org.jboss.logging.Logger;
   @POST
   @Transactional
   public Response create(Store store) {
-<span class="nc bnc" id="L55" title="All 2 branches missed.">    if (store.id != null) {</span>
-<span class="nc" id="L56">      throw new WebApplicationException(&quot;Id was invalidly set on request.&quot;, 422);</span>
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">    if (store.id != null) {</span>
+<span class="fc" id="L56">      throw new WebApplicationException(&quot;Id was invalidly set on request.&quot;, 422);</span>
     }
 
 <span class="nc" id="L59">    store.persist();</span>
@@ -68,8 +68,8 @@ import org.jboss.logging.Logger;
   @Path(&quot;{id}&quot;)
   @Transactional
   public Store update(Long id, Store updatedStore) {
-<span class="nc bnc" id="L71" title="All 2 branches missed.">    if (updatedStore.getName() == null) {</span>
-<span class="nc" id="L72">      throw new WebApplicationException(&quot;Store Name was not set on request.&quot;, 422);</span>
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">    if (updatedStore.getName() == null) {</span>
+<span class="fc" id="L72">      throw new WebApplicationException(&quot;Store Name was not set on request.&quot;, 422);</span>
     }
 
 <span class="nc" id="L75">    Store entity = Store.findById(id);</span>
@@ -92,8 +92,8 @@ import org.jboss.logging.Logger;
   @Path(&quot;{id}&quot;)
   @Transactional
   public Store patch(Long id, Store updatedStore) {
-<span class="nc bnc" id="L95" title="All 2 branches missed.">    if (updatedStore.getName() == null) {</span>
-<span class="nc" id="L96">      throw new WebApplicationException(&quot;Store Name was not set on request.&quot;, 422);</span>
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">    if (updatedStore.getName() == null) {</span>
+<span class="fc" id="L96">      throw new WebApplicationException(&quot;Store Name was not set on request.&quot;, 422);</span>
     }
 
 <span class="nc" id="L99">    Store entity = Store.findById(id);</span>
@@ -139,7 +139,7 @@ import org.jboss.logging.Logger;
 <span class="fc" id="L139">      LOGGER.error(&quot;Failed to handle request&quot;, exception);</span>
 
 <span class="fc" id="L141">      int code = 500;</span>
-<span class="pc bpc" id="L142" title="1 of 2 branches missed.">      if (exception instanceof WebApplicationException) {</span>
+<span class="fc bfc" id="L142" title="All 2 branches covered.">      if (exception instanceof WebApplicationException) {</span>
 <span class="fc" id="L143">        code = ((WebApplicationException) exception).getResponse().getStatus();</span>
       }
 

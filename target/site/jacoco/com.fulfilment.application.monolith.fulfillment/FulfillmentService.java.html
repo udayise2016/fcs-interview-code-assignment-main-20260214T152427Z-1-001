@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FulfillmentService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java-code-assignment</a> &gt; <a href="index.source.html" class="el_package">com.fulfilment.application.monolith.fulfillment</a> &gt; <span class="el_source">FulfillmentService.java</span></div><h1>FulfillmentService.java</h1><pre class="source lang-java linenums">package com.fulfilment.application.monolith.fulfillment;
+
+import com.fulfilment.application.monolith.fulfillment.FulfillmentAssociation;
+import com.fulfilment.application.monolith.products.Product;
+import com.fulfilment.application.monolith.stores.Store;
+import com.fulfilment.application.monolith.warehouses.adapters.database.DbWarehouse;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
+
+import java.util.List;
+
+@ApplicationScoped
+<span class="fc" id="L14">public class FulfillmentService {</span>
+
+    @Inject
+    FulfillmentRepository fulfillmentRepository;
+
+    // Constraints
+    private static final int MAX_WAREHOUSES_PER_PRODUCT_STORE = 2;
+    private static final int MAX_WAREHOUSES_PER_STORE = 3;
+    private static final int MAX_PRODUCT_TYPES_PER_WAREHOUSE = 5;
+
+    @Transactional
+    public FulfillmentAssociation createFulfillmentAssociation(Product product, DbWarehouse warehouse, Store store, Integer allocatedStock, Integer maxCapacity) {
+        // Validate constraints
+<span class="fc" id="L27">        validateConstraints(product, warehouse, store);</span>
+
+<span class="fc" id="L29">        FulfillmentAssociation association = new FulfillmentAssociation(product, warehouse, store, allocatedStock, maxCapacity);</span>
+<span class="fc" id="L30">        fulfillmentRepository.persist(association);</span>
+<span class="fc" id="L31">        return association;</span>
+    }
+
+    @Transactional
+    public List&lt;FulfillmentAssociation&gt; getFulfillmentsByProduct(Long productId) {
+<span class="fc" id="L36">        return fulfillmentRepository.findByProduct(productId);</span>
+    }
+
+    @Transactional
+    public List&lt;FulfillmentAssociation&gt; getFulfillmentsByWarehouse(String warehouseBusinessUnitCode) {
+<span class="fc" id="L41">        return fulfillmentRepository.findByWarehouse(warehouseBusinessUnitCode);</span>
+    }
+
+    @Transactional
+    public List&lt;FulfillmentAssociation&gt; getFulfillmentsByStore(Long storeId) {
+<span class="fc" id="L46">        return fulfillmentRepository.findByStore(storeId);</span>
+    }
+
+    @Transactional
+    public void deleteFulfillmentAssociation(Long associationId) {
+<span class="fc" id="L51">        fulfillmentRepository.deleteById(associationId);</span>
+<span class="fc" id="L52">    }</span>
+
+    private void validateConstraints(Product product, DbWarehouse warehouse, Store store) {
+        // Constraint 1: Each Product can be fulfilled by max 2 different Warehouses per Store
+<span class="fc" id="L56">        long productStoreCount = fulfillmentRepository.countByProductAndStore(product.id, store.id);</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        if (productStoreCount &gt;= MAX_WAREHOUSES_PER_PRODUCT_STORE) {</span>
+<span class="fc" id="L58">            throw new IllegalArgumentException(&quot;Product &quot; + product.name + &quot; can be fulfilled by maximum &quot; + </span>
+                MAX_WAREHOUSES_PER_PRODUCT_STORE + &quot; warehouses per store. Current: &quot; + productStoreCount);
+        }
+
+        // Constraint 2: Each Store can be fulfilled by max 3 different Warehouses
+<span class="fc" id="L63">        long storeCount = fulfillmentRepository.countByStore(store.id);</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        if (storeCount &gt;= MAX_WAREHOUSES_PER_STORE) {</span>
+<span class="fc" id="L65">            throw new IllegalArgumentException(&quot;Store &quot; + store.getName() + &quot; can be fulfilled by maximum &quot; + </span>
+                MAX_WAREHOUSES_PER_STORE + &quot; warehouses. Current: &quot; + storeCount);
+        }
+
+        // Constraint 3: Each Warehouse can store max 5 types of Products
+<span class="fc" id="L70">        long warehouseProductCount = fulfillmentRepository.countByWarehouse(warehouse.businessUnitCode);</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">        if (warehouseProductCount &gt;= MAX_PRODUCT_TYPES_PER_WAREHOUSE) {</span>
+<span class="fc" id="L72">            throw new IllegalArgumentException(&quot;Warehouse &quot; + warehouse.businessUnitCode + &quot; can store maximum &quot; + </span>
+                MAX_PRODUCT_TYPES_PER_WAREHOUSE + &quot; product types. Current: &quot; + warehouseProductCount);
+        }
+
+        // Check for existing association
+<span class="fc" id="L77">        List&lt;FulfillmentAssociation&gt; existing = fulfillmentRepository.findByProductAndStore(product.id, store.id);</span>
+<span class="fc" id="L78">        boolean warehouseAlreadyAssociated = existing.stream()</span>
+<span class="fc" id="L79">            .anyMatch(assoc -&gt; assoc.warehouse.businessUnitCode.equals(warehouse.businessUnitCode));</span>
+        
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        if (warehouseAlreadyAssociated) {</span>
+<span class="fc" id="L82">            throw new IllegalArgumentException(&quot;Warehouse &quot; + warehouse.businessUnitCode + </span>
+<span class="fc" id="L83">                &quot; is already associated with product &quot; + product.name + &quot; for store &quot; + store.getName());</span>
+        }
+<span class="fc" id="L85">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

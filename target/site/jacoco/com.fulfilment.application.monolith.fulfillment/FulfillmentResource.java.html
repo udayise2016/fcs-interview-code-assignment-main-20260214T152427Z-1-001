@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FulfillmentResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java-code-assignment</a> &gt; <a href="index.source.html" class="el_package">com.fulfilment.application.monolith.fulfillment</a> &gt; <span class="el_source">FulfillmentResource.java</span></div><h1>FulfillmentResource.java</h1><pre class="source lang-java linenums">package com.fulfilment.application.monolith.fulfillment;
+
+import com.fulfilment.application.monolith.fulfillment.FulfillmentRepository;
+import com.fulfilment.application.monolith.products.Product;
+import com.fulfilment.application.monolith.stores.Store;
+import com.fulfilment.application.monolith.warehouses.adapters.database.DbWarehouse;
+import com.fulfilment.application.monolith.warehouses.domain.models.Warehouse;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+
+import java.util.List;
+
+@Path(&quot;/fulfillment&quot;)
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+<span class="fc" id="L19">public class FulfillmentResource {</span>
+
+    @Inject
+    FulfillmentService fulfillmentService;
+
+    @Inject
+    FulfillmentRepository fulfillmentRepository;
+
+    @POST
+    public Response createFulfillment(FulfillmentRequest request) {
+        try {
+            // Convert request to domain objects (simplified for this example)
+<span class="fc" id="L31">            Product product = new Product();</span>
+<span class="fc" id="L32">            product.id = request.productId;</span>
+            
+            // Find the actual DbWarehouse entity
+<span class="fc" id="L35">            DbWarehouse dbWarehouse = new DbWarehouse();</span>
+<span class="fc" id="L36">            dbWarehouse.businessUnitCode = request.warehouseBusinessUnitCode;</span>
+            
+<span class="fc" id="L38">            Store store = new Store();</span>
+<span class="fc" id="L39">            store.id = request.storeId;</span>
+
+<span class="fc" id="L41">            FulfillmentAssociation association = fulfillmentService.createFulfillmentAssociation(</span>
+                product, dbWarehouse, store, request.allocatedStock, request.maxCapacity);
+
+<span class="fc" id="L44">            return Response.status(Response.Status.CREATED).entity(association).build();</span>
+<span class="fc" id="L45">        } catch (IllegalArgumentException e) {</span>
+<span class="fc" id="L46">            return Response.status(Response.Status.BAD_REQUEST)</span>
+<span class="fc" id="L47">                .entity(new ErrorResponse(e.getMessage()))</span>
+<span class="fc" id="L48">                .build();</span>
+        }
+    }
+
+    @GET
+    @Path(&quot;/product/{productId}&quot;)
+    public List&lt;FulfillmentAssociation&gt; getFulfillmentsByProduct(@PathParam(&quot;productId&quot;) Long productId) {
+<span class="fc" id="L55">        return fulfillmentService.getFulfillmentsByProduct(productId);</span>
+    }
+
+    @GET
+    @Path(&quot;/warehouse/{warehouseBusinessUnitCode}&quot;)
+    public List&lt;FulfillmentAssociation&gt; getFulfillmentsByWarehouse(@PathParam(&quot;warehouseBusinessUnitCode&quot;) String warehouseBusinessUnitCode) {
+<span class="fc" id="L61">        return fulfillmentService.getFulfillmentsByWarehouse(warehouseBusinessUnitCode);</span>
+    }
+
+    @GET
+    @Path(&quot;/store/{storeId}&quot;)
+    public List&lt;FulfillmentAssociation&gt; getFulfillmentsByStore(@PathParam(&quot;storeId&quot;) Long storeId) {
+<span class="fc" id="L67">        return fulfillmentService.getFulfillmentsByStore(storeId);</span>
+    }
+
+    @DELETE
+    @Path(&quot;/{associationId}&quot;)
+    public Response deleteFulfillment(@PathParam(&quot;associationId&quot;) Long associationId) {
+<span class="fc" id="L73">        fulfillmentService.deleteFulfillmentAssociation(associationId);</span>
+<span class="fc" id="L74">        return Response.noContent().build();</span>
+    }
+
+    @DELETE
+    @Path(&quot;/cleanup&quot;)
+    @Transactional
+    public Response cleanupTestData() {
+<span class="fc" id="L81">        fulfillmentRepository.deleteAll();</span>
+<span class="fc" id="L82">        return Response.noContent().build();</span>
+    }
+
+    // DTOs
+<span class="fc" id="L86">    public static class FulfillmentRequest {</span>
+        public Long productId;
+        public String warehouseBusinessUnitCode;
+        public Long storeId;
+        public Integer allocatedStock;
+        public Integer maxCapacity;
+    }
+
+    public static class ErrorResponse {
+        public String message;
+<span class="fc" id="L96">        public String type = &quot;IllegalArgumentException&quot;;</span>
+
+<span class="fc" id="L98">        public ErrorResponse(String message) {</span>
+<span class="fc" id="L99">            this.message = message;</span>
+<span class="fc" id="L100">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
