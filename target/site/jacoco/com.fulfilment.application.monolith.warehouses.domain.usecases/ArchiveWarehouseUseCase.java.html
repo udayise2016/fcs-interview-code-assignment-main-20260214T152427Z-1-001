@@ -21,13 +21,13 @@ public class ArchiveWarehouseUseCase implements ArchiveWarehouseOperation {
 <span class="fc" id="L21">    Warehouse existing = warehouseStore.findByBusinessUnitCode(warehouse.businessUnitCode);</span>
 <span class="fc bfc" id="L22" title="All 2 branches covered.">    if (existing == null) {</span>
 <span class="fc" id="L23">      throw new IllegalArgumentException(&quot;Warehouse with business unit code &quot; + </span>
-<span class="fc" id="L24">          warehouse.businessUnitCode + &quot; not found&quot;);</span>
+          warehouse.businessUnitCode + &quot; not found&quot;);
     }
     
     // Check if warehouse is already archived
 <span class="fc bfc" id="L28" title="All 2 branches covered.">    if (existing.archivedAt != null) {</span>
 <span class="fc" id="L29">      throw new IllegalArgumentException(&quot;Warehouse with business unit code &quot; + </span>
-<span class="fc" id="L30">          warehouse.businessUnitCode + &quot; is already archived&quot;);</span>
+          warehouse.businessUnitCode + &quot; is already archived&quot;);
     }
     
     // Set archive timestamp

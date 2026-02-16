@@ -24,7 +24,7 @@ public class CreateWarehouseUseCase implements CreateWarehouseOperation {
 <span class="fc" id="L24">    Warehouse existing = warehouseStore.findByBusinessUnitCode(warehouse.businessUnitCode);</span>
 <span class="fc bfc" id="L25" title="All 4 branches covered.">    if (existing != null &amp;&amp; existing.archivedAt == null) {</span>
 <span class="fc" id="L26">      throw new IllegalArgumentException(&quot;Warehouse with business unit code &quot; + </span>
-<span class="fc" id="L27">          warehouse.businessUnitCode + &quot; already exists&quot;);</span>
+          warehouse.businessUnitCode + &quot; already exists&quot;);
     }
     
     // Validate required fields
@@ -72,7 +72,7 @@ public class CreateWarehouseUseCase implements CreateWarehouseOperation {
     
 <span class="fc bfc" id="L73" title="All 2 branches covered.">    if (existingWarehousesCount &gt;= location.maxNumberOfWarehouses) {</span>
 <span class="fc" id="L74">      throw new IllegalArgumentException(&quot;Maximum number of warehouses (&quot; + </span>
-<span class="fc" id="L75">          location.maxNumberOfWarehouses + &quot;) reached for location: &quot; + location.identification);</span>
+          location.maxNumberOfWarehouses + &quot;) reached for location: &quot; + location.identification);
     }
 <span class="fc" id="L77">  }</span>
 
@@ -87,8 +87,8 @@ public class CreateWarehouseUseCase implements CreateWarehouseOperation {
     
 <span class="fc bfc" id="L88" title="All 2 branches covered.">    if (newTotalCapacity &gt; location.maxCapacity) {</span>
 <span class="fc" id="L89">      throw new IllegalArgumentException(&quot;Adding warehouse would exceed location's maximum capacity. &quot; +</span>
-<span class="fc" id="L90">          &quot;Current: &quot; + totalLocationCapacity + &quot;, Adding: &quot; + warehouse.capacity + </span>
-<span class="fc" id="L91">          &quot;, Max allowed: &quot; + location.maxCapacity);</span>
+          &quot;Current: &quot; + totalLocationCapacity + &quot;, Adding: &quot; + warehouse.capacity + 
+          &quot;, Max allowed: &quot; + location.maxCapacity);
     }
 <span class="fc" id="L93">  }</span>
 }
