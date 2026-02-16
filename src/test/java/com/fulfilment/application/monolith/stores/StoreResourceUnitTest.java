@@ -15,7 +15,6 @@ class StoreResourceUnitTest {
 
     private StoreResource storeResource;
     private LegacyStoreManagerGateway mockGateway;
-    @SuppressWarnings("unchecked")
     private Event<StoreTransactionEvent> mockEvent;
 
     @BeforeEach
@@ -24,7 +23,9 @@ class StoreResourceUnitTest {
 
         // Create mocks
         mockGateway = mock(LegacyStoreManagerGateway.class);
-        mockEvent = mock(Event.class);
+        @SuppressWarnings("unchecked")
+        Event<StoreTransactionEvent> tempMockEvent = (Event<StoreTransactionEvent>) mock(Event.class);
+        mockEvent = tempMockEvent;
 
         // Use reflection to inject mocks directly into fields
         injectField(storeResource, "legacyStoreManagerGateway", mockGateway);
