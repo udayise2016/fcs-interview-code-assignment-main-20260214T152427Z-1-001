@@ -10,6 +10,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -293,6 +295,113 @@ public class ReplaceWarehouseUseCaseTest {
   }
 
   @Test
+  void shouldThrowExceptionWhenBusinessUnitCodeIsNull() {
+    // Given - warehouseStore returns null when businessUnitCode is null (no match)
+    Warehouse newWarehouse = new Warehouse();
+    newWarehouse.businessUnitCode = null;
+    newWarehouse.location = "ZWOLLE-001";
+    newWarehouse.capacity = 1000;
+    newWarehouse.stock = 500;
+
+    // When & Then
+    IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> replaceWarehouseUseCase.replace(newWarehouse)
+    );
+    assertTrue(exception.getMessage().contains("not found") || exception.getMessage().contains("Business unit code is required"));
+  }
+
+  @Test
+  void shouldThrowExceptionWhenBusinessUnitCodeIsEmpty() {
+    // Given
+    Warehouse existingWarehouse = new Warehouse();
+    existingWarehouse.businessUnitCode = "WH001";
+    existingWarehouse.location = "ZWOLLE-001";
+    existingWarehouse.capacity = 1000;
+    existingWarehouse.stock = 500;
+    warehouseStore.warehouseToReturn = existingWarehouse;
+
+    Warehouse newWarehouse = new Warehouse();
+    newWarehouse.businessUnitCode = "   ";
+    newWarehouse.location = "ZWOLLE-001";
+    newWarehouse.capacity = 1000;
+    newWarehouse.stock = 500;
+
+    // When & Then
+    IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> replaceWarehouseUseCase.replace(newWarehouse)
+    );
+    assertEquals("Business unit code is required", exception.getMessage());
+  }
+
+  @Test
+  void shouldThrowExceptionWhenMaxWarehousesReachedAtLocation() {
+    // Given
+    Warehouse existingWarehouse = new Warehouse();
+    existingWarehouse.businessUnitCode = "WH001";
+    existingWarehouse.location = "ZWOLLE-001";
+    existingWarehouse.capacity = 1000;
+    existingWarehouse.stock = 500;
+    warehouseStore.warehouseToReturn = existingWarehouse;
+
+    Warehouse otherWarehouse = new Warehouse();
+    otherWarehouse.businessUnitCode = "WH002";
+    otherWarehouse.location = "ZWOLLE-001";
+    otherWarehouse.capacity = 500;
+    otherWarehouse.stock = 100;
+    warehouseStore.allWarehouses.add(otherWarehouse);
+
+    locationResolver.maxNumberOfWarehouses = 1;
+
+    Warehouse newWarehouse = new Warehouse();
+    newWarehouse.businessUnitCode = "WH001";
+    newWarehouse.location = "ZWOLLE-001";
+    newWarehouse.capacity = 800;
+    newWarehouse.stock = 500;
+
+    // When & Then
+    IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> replaceWarehouseUseCase.replace(newWarehouse)
+    );
+    assertTrue(exception.getMessage().contains("Maximum number of warehouses"));
+  }
+
+  @Test
+  void shouldThrowExceptionWhenExceedsLocationMaxCapacity() {
+    // Given
+    Warehouse existingWarehouse = new Warehouse();
+    existingWarehouse.businessUnitCode = "WH001";
+    existingWarehouse.location = "ZWOLLE-001";
+    existingWarehouse.capacity = 1000;
+    existingWarehouse.stock = 100;
+    warehouseStore.warehouseToReturn = existingWarehouse;
+
+    Warehouse otherWarehouse = new Warehouse();
+    otherWarehouse.businessUnitCode = "WH002";
+    otherWarehouse.location = "ZWOLLE-001";
+    otherWarehouse.capacity = 800;
+    otherWarehouse.stock = 100;
+    warehouseStore.allWarehouses.add(otherWarehouse);
+
+    locationResolver.maxCapacity = 900;
+
+    Warehouse newWarehouse = new Warehouse();
+    newWarehouse.businessUnitCode = "WH001";
+    newWarehouse.location = "ZWOLLE-001";
+    newWarehouse.capacity = 200; // other(800) + new(200) = 1000 > maxCapacity(900)
+    newWarehouse.stock = 100;   // matches existing stock, does not exceed capacity
+
+    // When & Then
+    IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> replaceWarehouseUseCase.replace(newWarehouse)
+    );
+    assertTrue(exception.getMessage().contains("exceed location's maximum capacity"));
+  }
+
+  @Test
   void shouldPreserveBusinessUnitCodeDuringReplacement() {
     // Given
     Warehouse existingWarehouse = new Warehouse();
@@ -321,10 +430,11 @@ public class ReplaceWarehouseUseCaseTest {
     Warehouse updatedWarehouse;
     Warehouse createdWarehouse;
     Warehouse warehouseToReturn;
+    List<Warehouse> allWarehouses = new ArrayList<>();
 
     @Override
-    public java.util.List<Warehouse> getAll() {
-      return java.util.Collections.emptyList();
+    public List<Warehouse> getAll() {
+      return allWarehouses;
     }
 
     @Override
@@ -351,17 +461,18 @@ public class ReplaceWarehouseUseCaseTest {
   // Test implementation of LocationResolver for testing
   private static class TestLocationResolver implements LocationResolver {
     Location locationToReturn;
+    int maxNumberOfWarehouses = 5;
+    int maxCapacity = 10000;
 
     @Override
     public Location resolveByIdentifier(String identifier) {
       if ("INVALID-LOCATION".equals(identifier)) {
         return null;
       }
-      // Return a default location for valid identifiers
       if (locationToReturn != null) {
         return locationToReturn;
       }
-      return new Location(identifier, 5, 100);
+      return new Location(identifier, maxNumberOfWarehouses, maxCapacity);
     }
   }
 }

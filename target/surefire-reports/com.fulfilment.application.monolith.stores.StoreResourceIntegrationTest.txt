@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest
 -------------------------------------------------------------------------------
-Tests run: 27, Failures: 26, Errors: 0, Skipped: 0, Time elapsed: 0.728 s <<< FAILURE! -- in com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testCreateStore_NullName -- Time elapsed: 0.041 s <<< FAILURE!
+Tests run: 27, Failures: 26, Errors: 0, Skipped: 0, Time elapsed: 1.567 s <<< FAILURE! -- in com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testCreateStore_NullName -- Time elapsed: 0.077 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <500> but was <201>.
@@ -37,7 +37,7 @@ Expected status code <500> but was <201>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testCreateStore_WithIdInBody -- Time elapsed: 0.023 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testCreateStore_WithIdInBody -- Time elapsed: 0.034 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -86,7 +86,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testUpdateStore_Success -- Time elapsed: 0.022 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testUpdateStore_Success -- Time elapsed: 0.035 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -135,7 +135,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testCreateStore_DuplicateName -- Time elapsed: 0.025 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testCreateStore_DuplicateName -- Time elapsed: 0.042 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -183,7 +183,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testGetAllStores_WithStores -- Time elapsed: 0.021 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testGetAllStores_WithStores -- Time elapsed: 0.061 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -231,7 +231,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testGetAllStores_EmptyList -- Time elapsed: 0.026 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testGetAllStores_EmptyList -- Time elapsed: 0.092 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -279,7 +279,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testGetAllStores_SortedByName -- Time elapsed: 0.024 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testGetAllStores_SortedByName -- Time elapsed: 0.086 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -327,7 +327,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testCreateStore_Success -- Time elapsed: 0.019 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testCreateStore_Success -- Time elapsed: 0.038 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -375,7 +375,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testGetSingleStore_Success -- Time elapsed: 0.021 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testGetSingleStore_Success -- Time elapsed: 0.037 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -423,7 +423,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testCreateStore_NegativeStock -- Time elapsed: 0.021 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testCreateStore_NegativeStock -- Time elapsed: 0.037 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -471,7 +471,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testPatchStore_ZeroStock -- Time elapsed: 0.021 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testPatchStore_ZeroStock -- Time elapsed: 0.033 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -519,7 +519,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testStoreNameExceedsMaxLength -- Time elapsed: 0.025 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testStoreNameExceedsMaxLength -- Time elapsed: 0.038 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -567,7 +567,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testStoreNameMaxLength -- Time elapsed: 0.027 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testStoreNameMaxLength -- Time elapsed: 0.053 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -615,7 +615,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testPatchStore_Success -- Time elapsed: 0.025 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testPatchStore_Success -- Time elapsed: 0.080 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -663,7 +663,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testPatchStore_OnlyStock -- Time elapsed: 0.026 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testPatchStore_OnlyStock -- Time elapsed: 0.051 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -711,7 +711,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testPatchStore_NotFound -- Time elapsed: 0.019 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testPatchStore_NotFound -- Time elapsed: 0.040 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -759,7 +759,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testCreateStore_EmptyName -- Time elapsed: 0.019 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testCreateStore_EmptyName -- Time elapsed: 0.039 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -807,7 +807,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testUpdateStore_NotFound -- Time elapsed: 0.024 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testUpdateStore_NotFound -- Time elapsed: 0.037 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -855,7 +855,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testPatchStore_OnlyName -- Time elapsed: 0.020 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testPatchStore_OnlyName -- Time elapsed: 0.036 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -903,7 +903,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testPatchStore_NullName -- Time elapsed: 0.025 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testPatchStore_NullName -- Time elapsed: 0.098 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -951,7 +951,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testGetSingleStore_NotFound -- Time elapsed: 0.029 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testGetSingleStore_NotFound -- Time elapsed: 0.069 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -999,7 +999,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testUpdateStore_EmptyName -- Time elapsed: 0.026 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testUpdateStore_EmptyName -- Time elapsed: 0.040 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -1047,7 +1047,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testDeleteStore_NotFound -- Time elapsed: 0.022 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testDeleteStore_NotFound -- Time elapsed: 0.036 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -1095,7 +1095,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testUpdateStore_NullName -- Time elapsed: 0.020 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testUpdateStore_NullName -- Time elapsed: 0.045 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -1143,7 +1143,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testErrorMapper_GenericException -- Time elapsed: 0.017 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testErrorMapper_GenericException -- Time elapsed: 0.037 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -1191,7 +1191,7 @@ Expected status code <201> but was <500>.
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testErrorMapper_WithoutMessage -- Time elapsed: 0.019 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceIntegrationTest.testErrorMapper_WithoutMessage -- Time elapsed: 0.040 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
