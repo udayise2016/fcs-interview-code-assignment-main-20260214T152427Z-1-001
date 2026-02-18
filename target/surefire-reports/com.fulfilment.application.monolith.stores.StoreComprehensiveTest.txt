@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.fulfilment.application.monolith.stores.StoreComprehensiveTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 2, Errors: 2, Skipped: 0, Time elapsed: 0.917 s <<< FAILURE! -- in com.fulfilment.application.monolith.stores.StoreComprehensiveTest
-com.fulfilment.application.monolith.stores.StoreComprehensiveTest.testStoreEdgeCasesAndValidation -- Time elapsed: 0.212 s <<< ERROR!
+Tests run: 6, Failures: 2, Errors: 2, Skipped: 0, Time elapsed: 2.078 s <<< FAILURE! -- in com.fulfilment.application.monolith.stores.StoreComprehensiveTest
+com.fulfilment.application.monolith.stores.StoreComprehensiveTest.testStoreEdgeCasesAndValidation -- Time elapsed: 0.516 s <<< ERROR!
 java.lang.IllegalArgumentException: 
 Invalid JSON expression:
 Script1.groovy: 1: Unexpected input: '                         [' @ line 1, column 27.
@@ -119,7 +119,7 @@ Script1.groovy: 1: Unexpected input: 'restAssuredJsonRootObject.[' @ line 1, col
 	at io.restassured.internal.path.json.JSONAssertion.getAsJsonObject(JSONAssertion.groovy:46)
 	... 36 more
 
-com.fulfilment.application.monolith.stores.StoreComprehensiveTest.testStoreSpecialCharactersAndUnicode -- Time elapsed: 0.109 s <<< ERROR!
+com.fulfilment.application.monolith.stores.StoreComprehensiveTest.testStoreSpecialCharactersAndUnicode -- Time elapsed: 0.214 s <<< ERROR!
 java.lang.IllegalArgumentException: 
 Invalid JSON expression:
 Script1.groovy: 1: Unexpected input: '                         [' @ line 1, column 27.
@@ -234,7 +234,7 @@ Script1.groovy: 1: Unexpected input: 'restAssuredJsonRootObject.[' @ line 1, col
 	at io.restassured.internal.path.json.JSONAssertion.getAsJsonObject(JSONAssertion.groovy:46)
 	... 36 more
 
-com.fulfilment.application.monolith.stores.StoreComprehensiveTest.testStoreTransactionEvents -- Time elapsed: 0.063 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreComprehensiveTest.testStoreTransactionEvents -- Time elapsed: 0.092 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -378,7 +378,7 @@ insert into Store (name,quantityProductsInStock,id) values (?,?,?) [23505-224]
 	Caused by: [CIRCULAR REFERENCE: org.hibernate.exception.ConstraintViolationException: could not execute statement [Unique index or primary key violation: "PUBLIC.CONSTRAINT_INDEX_4 ON PUBLIC.STORE(NAME NULLS FIRST) VALUES ( /* 26 */ 'Event Test Store' )"; SQL statement:
 insert into Store (name,quantityProductsInStock,id) values (?,?,?) [23505-224]] [insert into Store (name,quantityProductsInStock,id) values (?,?,?)]]
 
-com.fulfilment.application.monolith.stores.StoreComprehensiveTest.testStoreErrorHandling -- Time elapsed: 0.022 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreComprehensiveTest.testStoreErrorHandling -- Time elapsed: 0.059 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <500> but was <400>.

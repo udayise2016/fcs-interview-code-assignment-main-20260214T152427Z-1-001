@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 8, Skipped: 0, Time elapsed: 0.366 s <<< FAILURE! -- in com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest
-com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest.testGetFulfillmentsByProduct -- Time elapsed: 0.103 s <<< ERROR!
+Tests run: 8, Failures: 0, Errors: 8, Skipped: 0, Time elapsed: 0.653 s <<< FAILURE! -- in com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest
+com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest.testGetFulfillmentsByProduct -- Time elapsed: 0.170 s <<< ERROR!
 org.hibernate.exception.ConstraintViolationException: 
 could not execute statement [Referential integrity constraint violation: "FKED8R0QOL0BC6KYM5LOEXXEORC: PUBLIC.FULFILLMENT_ASSOCIATION FOREIGN KEY(PRODUCT_ID) REFERENCES PUBLIC.PRODUCT(ID) (CAST(1 AS BIGINT))"; SQL statement:
 insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store_id,warehouse_id,id) values (?,?,?,?,?,?) [23506-224]] [insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store_id,warehouse_id,id) values (?,?,?,?,?,?)]
@@ -89,7 +89,7 @@ insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store
 	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
 	... 58 more
 
-com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest.testConstraint_MaxWarehousesPerStore -- Time elapsed: 0.035 s <<< ERROR!
+com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest.testConstraint_MaxWarehousesPerStore -- Time elapsed: 0.054 s <<< ERROR!
 org.hibernate.exception.ConstraintViolationException: 
 could not execute statement [Referential integrity constraint violation: "FKED8R0QOL0BC6KYM5LOEXXEORC: PUBLIC.FULFILLMENT_ASSOCIATION FOREIGN KEY(PRODUCT_ID) REFERENCES PUBLIC.PRODUCT(ID) (CAST(1 AS BIGINT))"; SQL statement:
 insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store_id,warehouse_id,id) values (?,?,?,?,?,?) [23506-224]] [insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store_id,warehouse_id,id) values (?,?,?,?,?,?)]
@@ -177,7 +177,7 @@ insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store
 	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
 	... 59 more
 
-com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest.testDeleteFulfillmentAssociation -- Time elapsed: 0.042 s <<< ERROR!
+com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest.testDeleteFulfillmentAssociation -- Time elapsed: 0.119 s <<< ERROR!
 org.hibernate.exception.ConstraintViolationException: 
 could not execute statement [Referential integrity constraint violation: "FKED8R0QOL0BC6KYM5LOEXXEORC: PUBLIC.FULFILLMENT_ASSOCIATION FOREIGN KEY(PRODUCT_ID) REFERENCES PUBLIC.PRODUCT(ID) (CAST(1 AS BIGINT))"; SQL statement:
 insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store_id,warehouse_id,id) values (?,?,?,?,?,?) [23506-224]] [insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store_id,warehouse_id,id) values (?,?,?,?,?,?)]
@@ -264,7 +264,7 @@ insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store
 	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
 	... 58 more
 
-com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest.testCreateFulfillmentAssociation_Success -- Time elapsed: 0.041 s <<< ERROR!
+com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest.testCreateFulfillmentAssociation_Success -- Time elapsed: 0.059 s <<< ERROR!
 io.quarkus.arc.ArcUndeclaredThrowableException: Error invoking subclass method
 	at com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest_Subclass.testCreateFulfillmentAssociation_Success(Unknown Source)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
@@ -354,7 +354,7 @@ Caused by: jakarta.transaction.RollbackException: ARJUNA016053: Could not commit
 Caused by: [CIRCULAR REFERENCE: org.hibernate.exception.ConstraintViolationException: could not execute statement [Referential integrity constraint violation: "FKED8R0QOL0BC6KYM5LOEXXEORC: PUBLIC.FULFILLMENT_ASSOCIATION FOREIGN KEY(PRODUCT_ID) REFERENCES PUBLIC.PRODUCT(ID) (CAST(1 AS BIGINT))"; SQL statement:
 insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store_id,warehouse_id,id) values (?,?,?,?,?,?) [23506-224]] [insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store_id,warehouse_id,id) values (?,?,?,?,?,?)]]
 
-com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest.testGetFulfillmentsByStore -- Time elapsed: 0.031 s <<< ERROR!
+com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest.testGetFulfillmentsByStore -- Time elapsed: 0.038 s <<< ERROR!
 org.hibernate.exception.ConstraintViolationException: 
 could not execute statement [Referential integrity constraint violation: "FKED8R0QOL0BC6KYM5LOEXXEORC: PUBLIC.FULFILLMENT_ASSOCIATION FOREIGN KEY(PRODUCT_ID) REFERENCES PUBLIC.PRODUCT(ID) (CAST(1 AS BIGINT))"; SQL statement:
 insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store_id,warehouse_id,id) values (?,?,?,?,?,?) [23506-224]] [insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store_id,warehouse_id,id) values (?,?,?,?,?,?)]
@@ -441,7 +441,7 @@ insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store
 	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
 	... 58 more
 
-com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest.testConstraint_MaxWarehousesPerProductStore -- Time elapsed: 0.028 s <<< ERROR!
+com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest.testConstraint_MaxWarehousesPerProductStore -- Time elapsed: 0.035 s <<< ERROR!
 org.hibernate.exception.ConstraintViolationException: 
 could not execute statement [Referential integrity constraint violation: "FKED8R0QOL0BC6KYM5LOEXXEORC: PUBLIC.FULFILLMENT_ASSOCIATION FOREIGN KEY(PRODUCT_ID) REFERENCES PUBLIC.PRODUCT(ID) (CAST(1 AS BIGINT))"; SQL statement:
 insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store_id,warehouse_id,id) values (?,?,?,?,?,?) [23506-224]] [insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store_id,warehouse_id,id) values (?,?,?,?,?,?)]
@@ -529,7 +529,7 @@ insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store
 	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
 	... 59 more
 
-com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest.testGetFulfillmentsByWarehouse -- Time elapsed: 0.027 s <<< ERROR!
+com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest.testGetFulfillmentsByWarehouse -- Time elapsed: 0.052 s <<< ERROR!
 org.hibernate.exception.ConstraintViolationException: 
 could not execute statement [Referential integrity constraint violation: "FKED8R0QOL0BC6KYM5LOEXXEORC: PUBLIC.FULFILLMENT_ASSOCIATION FOREIGN KEY(PRODUCT_ID) REFERENCES PUBLIC.PRODUCT(ID) (CAST(1 AS BIGINT))"; SQL statement:
 insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store_id,warehouse_id,id) values (?,?,?,?,?,?) [23506-224]] [insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store_id,warehouse_id,id) values (?,?,?,?,?,?)]
@@ -616,7 +616,7 @@ insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store
 	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
 	... 58 more
 
-com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest.testConstraint_MaxProductTypesPerWarehouse -- Time elapsed: 0.022 s <<< ERROR!
+com.fulfilment.application.monolith.fulfillment.FulfillmentServiceTest.testConstraint_MaxProductTypesPerWarehouse -- Time elapsed: 0.047 s <<< ERROR!
 org.hibernate.exception.ConstraintViolationException: 
 could not execute statement [Referential integrity constraint violation: "FKED8R0QOL0BC6KYM5LOEXXEORC: PUBLIC.FULFILLMENT_ASSOCIATION FOREIGN KEY(PRODUCT_ID) REFERENCES PUBLIC.PRODUCT(ID) (CAST(1 AS BIGINT))"; SQL statement:
 insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store_id,warehouse_id,id) values (?,?,?,?,?,?) [23506-224]] [insert into fulfillment_association (allocatedStock,maxCapacity,product_id,store_id,warehouse_id,id) values (?,?,?,?,?,?)]

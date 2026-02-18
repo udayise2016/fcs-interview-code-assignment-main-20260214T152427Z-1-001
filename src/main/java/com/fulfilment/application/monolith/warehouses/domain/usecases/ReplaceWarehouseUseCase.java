@@ -34,6 +34,11 @@ public class ReplaceWarehouseUseCase implements ReplaceWarehouseOperation {
           newWarehouse.businessUnitCode + " is already archived");
     }
     
+    // Validate business unit code is present
+    if (newWarehouse.businessUnitCode == null || newWarehouse.businessUnitCode.trim().isEmpty()) {
+      throw new IllegalArgumentException("Business unit code is required");
+    }
+
     // Validate new warehouse data
     if (newWarehouse.location == null || newWarehouse.location.trim().isEmpty()) {
       throw new IllegalArgumentException("Location is required");
@@ -57,6 +62,12 @@ public class ReplaceWarehouseUseCase implements ReplaceWarehouseOperation {
       throw new IllegalArgumentException("Invalid location: " + newWarehouse.location);
     }
 
+    // Validate warehouse creation feasibility (max warehouses per location)
+    validateWarehouseCreationFeasibility(location, existing);
+
+    // Validate capacity and stock against location limits
+    validateCapacityAndStockAgainstLocationLimitsForReplace(location, existing, newWarehouse);
+
     // Validate replacement-specific constraints
     validateReplacementConstraints(existing, newWarehouse);
 
@@ -68,6 +79,31 @@ public class ReplaceWarehouseUseCase implements ReplaceWarehouseOperation {
     newWarehouse.createdAt = LocalDateTime.now();
     newWarehouse.archivedAt = null; // Ensure new warehouse is not archived
     warehouseStore.create(newWarehouse);
+  }
+
+  private void validateWarehouseCreationFeasibility(Location location, Warehouse existing) {
+    long existingWarehousesCount = warehouseStore.getAll().stream()
+        .filter(w -> w.location.equals(location.identification) && w.archivedAt == null
+            && !w.businessUnitCode.equals(existing.businessUnitCode))
+        .count();
+    if (existingWarehousesCount >= location.maxNumberOfWarehouses) {
+      throw new IllegalArgumentException("Maximum number of warehouses (" +
+          location.maxNumberOfWarehouses + ") reached for location: " + location.identification);
+    }
+  }
+
+  private void validateCapacityAndStockAgainstLocationLimitsForReplace(Location location, Warehouse existing, Warehouse newWarehouse) {
+    int totalLocationCapacity = warehouseStore.getAll().stream()
+        .filter(w -> w.location.equals(location.identification) && w.archivedAt == null
+            && !w.businessUnitCode.equals(existing.businessUnitCode))
+        .mapToInt(w -> w.capacity)
+        .sum();
+    int newTotalCapacity = totalLocationCapacity + newWarehouse.capacity;
+    if (newTotalCapacity > location.maxCapacity) {
+      throw new IllegalArgumentException("Replacing warehouse would exceed location's maximum capacity. " +
+          "Current: " + totalLocationCapacity + ", Replacing with: " + newWarehouse.capacity +
+          ", Max allowed: " + location.maxCapacity);
+    }
   }
 
   private void validateReplacementConstraints(Warehouse existing, Warehouse newWarehouse) {

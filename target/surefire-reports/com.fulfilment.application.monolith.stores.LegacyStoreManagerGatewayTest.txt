@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest
 -------------------------------------------------------------------------------
-Tests run: 17, Failures: 16, Errors: 0, Skipped: 0, Time elapsed: 0.233 s <<< FAILURE! -- in com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest
-com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testUpdateStoreOnLegacySystem_SameDataAsCreate -- Time elapsed: 0.021 s <<< FAILURE!
+Tests run: 17, Failures: 16, Errors: 0, Skipped: 0, Time elapsed: 0.360 s <<< FAILURE! -- in com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest
+com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testUpdateStoreOnLegacySystem_SameDataAsCreate -- Time elapsed: 0.029 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -17,7 +17,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_MinimumStock -- Time elapsed: 0.006 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_MinimumStock -- Time elapsed: 0.011 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -32,7 +32,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_EmptyName -- Time elapsed: 0.006 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_EmptyName -- Time elapsed: 0.010 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -47,7 +47,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testWriteToFileContentIntegrity -- Time elapsed: 0.005 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testWriteToFileContentIntegrity -- Time elapsed: 0.012 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -62,7 +62,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_UnicodeCharacters -- Time elapsed: 0.009 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_UnicodeCharacters -- Time elapsed: 0.013 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -92,7 +92,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_VeryLongName -- Time elapsed: 0.010 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_VeryLongName -- Time elapsed: 0.009 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -107,7 +107,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_ValidStore -- Time elapsed: 0.008 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_ValidStore -- Time elapsed: 0.017 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -122,7 +122,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_NameWithSpaces -- Time elapsed: 0.009 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_NameWithSpaces -- Time elapsed: 0.014 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -137,7 +137,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_SpecialCharacters -- Time elapsed: 0.005 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_SpecialCharacters -- Time elapsed: 0.010 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -152,7 +152,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testUpdateStoreOnLegacySystem_ValidStore -- Time elapsed: 0.006 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testUpdateStoreOnLegacySystem_ValidStore -- Time elapsed: 0.014 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -167,7 +167,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_NullStore -- Time elapsed: 0.005 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_NullStore -- Time elapsed: 0.010 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -182,7 +182,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testUpdateStoreOnLegacySystem_NullStore -- Time elapsed: 0.004 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testUpdateStoreOnLegacySystem_NullStore -- Time elapsed: 0.006 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -197,7 +197,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_MaximumStock -- Time elapsed: 0.008 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_MaximumStock -- Time elapsed: 0.017 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -212,7 +212,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testMultipleOperations -- Time elapsed: 0.014 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testMultipleOperations -- Time elapsed: 0.026 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -227,7 +227,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_NegativeStock -- Time elapsed: 0.006 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.LegacyStoreManagerGatewayTest.testCreateStoreOnLegacySystem_NegativeStock -- Time elapsed: 0.010 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)

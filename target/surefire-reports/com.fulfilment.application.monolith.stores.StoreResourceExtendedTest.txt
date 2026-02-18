@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.fulfilment.application.monolith.stores.StoreResourceExtendedTest
 -------------------------------------------------------------------------------
-Tests run: 15, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.735 s <<< FAILURE! -- in com.fulfilment.application.monolith.stores.StoreResourceExtendedTest
-com.fulfilment.application.monolith.stores.StoreResourceExtendedTest.testStoreResourceErrorHandling -- Time elapsed: 0.014 s <<< FAILURE!
+Tests run: 15, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 1.833 s <<< FAILURE! -- in com.fulfilment.application.monolith.stores.StoreResourceExtendedTest
+com.fulfilment.application.monolith.stores.StoreResourceExtendedTest.testStoreResourceErrorHandling -- Time elapsed: 0.077 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <500> but was <400>.
@@ -66,7 +66,7 @@ Expected status code <500> but was <400>.
 		at io.quarkus.resteasy.reactive.jackson.runtime.serialisers.ServerJacksonMessageBodyReader.readFrom(ServerJacksonMessageBodyReader.java:38)
 		... 13 more
 
-com.fulfilment.application.monolith.stores.StoreResourceExtendedTest.testStoreResourcePatchOnlyName -- Time elapsed: 0.070 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceExtendedTest.testStoreResourcePatchOnlyName -- Time elapsed: 0.206 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 JSON path quantityProductsInStock doesn't match.
@@ -103,7 +103,7 @@ Expected: <100>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceExtendedTest.testStoreResourcePatchOnlyStock -- Time elapsed: 0.041 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceExtendedTest.testStoreResourcePatchOnlyStock -- Time elapsed: 0.110 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <200> but was <422>.
@@ -167,7 +167,7 @@ Expected status code <200> but was <422>.
 		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
 		at java.base/java.lang.Thread.run(Thread.java:842)
 
-com.fulfilment.application.monolith.stores.StoreResourceExtendedTest.testStoreResourceCreateWithEmptyName -- Time elapsed: 0.025 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreResourceExtendedTest.testStoreResourceCreateWithEmptyName -- Time elapsed: 0.078 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
