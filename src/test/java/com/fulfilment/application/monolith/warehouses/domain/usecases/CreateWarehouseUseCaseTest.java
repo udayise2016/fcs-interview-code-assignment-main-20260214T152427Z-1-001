@@ -222,6 +222,11 @@ public class CreateWarehouseUseCaseTest {
     public Warehouse findByBusinessUnitCode(String buCode) {
       return warehouseToReturn;
     }
+
+    @Override
+    public Warehouse findById(String id) {
+      return warehouseToReturn;
+    }
   }
 
   // Test implementation of LocationResolver for testing

@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest
 -------------------------------------------------------------------------------
-Tests run: 17, Failures: 15, Errors: 0, Skipped: 0, Time elapsed: 0.183 s <<< FAILURE! -- in com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest
-com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_NullStore -- Time elapsed: 0.005 s <<< FAILURE!
+Tests run: 17, Failures: 15, Errors: 0, Skipped: 0, Time elapsed: 0.156 s <<< FAILURE! -- in com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest
+com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_NullStore -- Time elapsed: 0.004 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -62,7 +62,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_StoreWithMinimumStock -- Time elapsed: 0.009 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_StoreWithMinimumStock -- Time elapsed: 0.005 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -77,7 +77,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_StoreNameLengthBoundary -- Time elapsed: 0.011 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_StoreNameLengthBoundary -- Time elapsed: 0.005 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -92,7 +92,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_StoreWithNegativeStock -- Time elapsed: 0.008 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_StoreWithNegativeStock -- Time elapsed: 0.006 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -107,7 +107,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_UpdateAction -- Time elapsed: 0.011 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_UpdateAction -- Time elapsed: 0.006 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -122,7 +122,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_StoreWithEmptyName -- Time elapsed: 0.006 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_StoreWithEmptyName -- Time elapsed: 0.008 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -137,7 +137,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_StoreNameExceedsBoundary -- Time elapsed: 0.007 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_StoreNameExceedsBoundary -- Time elapsed: 0.005 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -152,7 +152,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_StoreWithUnicodeCharacters -- Time elapsed: 0.010 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_StoreWithUnicodeCharacters -- Time elapsed: 0.008 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -167,7 +167,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_StoreWithZeroStock -- Time elapsed: 0.007 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_StoreWithZeroStock -- Time elapsed: 0.004 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -182,7 +182,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_MultipleEventsDifferentStores -- Time elapsed: 0.016 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_MultipleEventsDifferentStores -- Time elapsed: 0.013 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -212,7 +212,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_MultipleEventsSameStore -- Time elapsed: 0.013 s <<< FAILURE!
+com.fulfilment.application.monolith.stores.StoreTransactionEventListenerIntegrationTest.testAfterTransactionCommit_MultipleEventsSameStore -- Time elapsed: 0.014 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)

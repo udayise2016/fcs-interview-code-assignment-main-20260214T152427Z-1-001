@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest
 -------------------------------------------------------------------------------
-Tests run: 15, Failures: 0, Errors: 8, Skipped: 0, Time elapsed: 0.186 s <<< FAILURE! -- in com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest
-com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceErrorMapper -- Time elapsed: 0.010 s <<< ERROR!
+Tests run: 15, Failures: 0, Errors: 8, Skipped: 0, Time elapsed: 0.147 s <<< FAILURE! -- in com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest
+com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceErrorMapper -- Time elapsed: 0.006 s <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "com.fasterxml.jackson.databind.ObjectMapper.createObjectNode()" because "this.objectMapper" is null
 	at com.fulfilment.application.monolith.stores.StoreResource$ErrorMapper.toResponse(StoreResource.java:146)
 	at com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceErrorMapper(StoreResourceAdditionalTest.java:209)
@@ -15,7 +15,7 @@ java.lang.NullPointerException: Cannot invoke "com.fasterxml.jackson.databind.Ob
 		at com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceErrorMapper(StoreResourceAdditionalTest.java:206)
 		... 5 more
 
-com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceDelete -- Time elapsed: 0.010 s <<< ERROR!
+com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceDelete -- Time elapsed: 0.005 s <<< ERROR!
 jakarta.persistence.TransactionRequiredException: Transaction is not active, consider adding @Transactional to your method to automatically activate one.
 	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.persist(TransactionScopedSession.java:144)
 	at org.hibernate.engine.spi.SessionLazyDelegator.persist(SessionLazyDelegator.java:282)
@@ -30,7 +30,7 @@ jakarta.persistence.TransactionRequiredException: Transaction is not active, con
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceGetAll -- Time elapsed: 0.006 s <<< ERROR!
+com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceGetAll -- Time elapsed: 0.007 s <<< ERROR!
 jakarta.persistence.TransactionRequiredException: Transaction is not active, consider adding @Transactional to your method to automatically activate one.
 	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.persist(TransactionScopedSession.java:144)
 	at org.hibernate.engine.spi.SessionLazyDelegator.persist(SessionLazyDelegator.java:282)
@@ -45,7 +45,7 @@ jakarta.persistence.TransactionRequiredException: Transaction is not active, con
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceUpdate -- Time elapsed: 0.007 s <<< ERROR!
+com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceUpdate -- Time elapsed: 0.003 s <<< ERROR!
 jakarta.persistence.TransactionRequiredException: Transaction is not active, consider adding @Transactional to your method to automatically activate one.
 	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.persist(TransactionScopedSession.java:144)
 	at org.hibernate.engine.spi.SessionLazyDelegator.persist(SessionLazyDelegator.java:282)
@@ -60,7 +60,7 @@ jakarta.persistence.TransactionRequiredException: Transaction is not active, con
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourcePatch -- Time elapsed: 0.006 s <<< ERROR!
+com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourcePatch -- Time elapsed: 0.004 s <<< ERROR!
 jakarta.persistence.TransactionRequiredException: Transaction is not active, consider adding @Transactional to your method to automatically activate one.
 	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.persist(TransactionScopedSession.java:144)
 	at org.hibernate.engine.spi.SessionLazyDelegator.persist(SessionLazyDelegator.java:282)
@@ -75,7 +75,7 @@ jakarta.persistence.TransactionRequiredException: Transaction is not active, con
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceGetSingle -- Time elapsed: 0.009 s <<< ERROR!
+com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceGetSingle -- Time elapsed: 0.005 s <<< ERROR!
 jakarta.persistence.TransactionRequiredException: Transaction is not active, consider adding @Transactional to your method to automatically activate one.
 	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.persist(TransactionScopedSession.java:144)
 	at org.hibernate.engine.spi.SessionLazyDelegator.persist(SessionLazyDelegator.java:282)
@@ -90,7 +90,7 @@ jakarta.persistence.TransactionRequiredException: Transaction is not active, con
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceUpdateNullName -- Time elapsed: 0.006 s <<< ERROR!
+com.fulfilment.application.monolith.stores.StoreResourceAdditionalTest.testStoreResourceUpdateNullName -- Time elapsed: 0.004 s <<< ERROR!
 jakarta.persistence.TransactionRequiredException: Transaction is not active, consider adding @Transactional to your method to automatically activate one.
 	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.persist(TransactionScopedSession.java:144)
 	at org.hibernate.engine.spi.SessionLazyDelegator.persist(SessionLazyDelegator.java:282)

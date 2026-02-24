@@ -111,12 +111,16 @@ class WarehouseResourceImplTest {
         // Given
         Warehouse warehouse = createTestWarehouse("WH001", "ZWOLLE-001", 100, 50);
         warehouseRepository.create(warehouse);
+        
+        // Get the warehouse with its assigned ID
+        Warehouse createdWarehouse = warehouseRepository.findByBusinessUnitCode("WH001");
+        assertNotNull(createdWarehouse.id);
 
         // When
-        warehouseResource.archiveAWarehouseUnitByID("WH001");
+        warehouseResource.archiveAWarehouseUnitByID(createdWarehouse.id);
 
         // Then
-        Warehouse archivedWarehouse = warehouseRepository.findByBusinessUnitCode("WH001");
+        Warehouse archivedWarehouse = warehouseRepository.findById(createdWarehouse.id);
         assertNotNull(archivedWarehouse);
         assertNotNull(archivedWarehouse.archivedAt);
     }
@@ -132,9 +136,13 @@ class WarehouseResourceImplTest {
         // Given
         Warehouse warehouse = createTestWarehouse("WH001", "ZWOLLE-001", 100, 50);
         warehouseRepository.create(warehouse);
+        
+        // Get the warehouse with its assigned ID
+        Warehouse createdWarehouse = warehouseRepository.findByBusinessUnitCode("WH001");
+        assertNotNull(createdWarehouse.id);
 
         // When
-        com.warehouse.api.beans.Warehouse result = warehouseResource.getAWarehouseUnitByID("WH001");
+        com.warehouse.api.beans.Warehouse result = warehouseResource.getAWarehouseUnitByID(createdWarehouse.id);
 
         // Then
         assertNotNull(result);
@@ -142,6 +150,7 @@ class WarehouseResourceImplTest {
         assertEquals("ZWOLLE-001", result.getLocation());
         assertEquals(100, result.getCapacity());
         assertEquals(50, result.getStock());
+        assertEquals(createdWarehouse.id, result.getId());
     }
 
     @Test
@@ -159,7 +168,7 @@ class WarehouseResourceImplTest {
         com.warehouse.api.beans.Warehouse newWarehouseData = new com.warehouse.api.beans.Warehouse();
         newWarehouseData.setBusinessUnitCode("WH001");
         newWarehouseData.setLocation("AMSTERDAM-001");
-        newWarehouseData.setCapacity(200);
+        newWarehouseData.setCapacity(80);
         newWarehouseData.setStock(50);
 
         // When

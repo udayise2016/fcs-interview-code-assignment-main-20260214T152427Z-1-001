@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.fulfilment.application.monolith.fulfillment.FulfillmentResourceTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 45.24 s <<< FAILURE! -- in com.fulfilment.application.monolith.fulfillment.FulfillmentResourceTest
-com.fulfilment.application.monolith.fulfillment.FulfillmentResourceTest.testGetFulfillmentsByProduct -- Time elapsed: 9.547 s <<< FAILURE!
+Tests run: 6, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 85.73 s <<< FAILURE! -- in com.fulfilment.application.monolith.fulfillment.FulfillmentResourceTest
+com.fulfilment.application.monolith.fulfillment.FulfillmentResourceTest.testGetFulfillmentsByProduct -- Time elapsed: 17.32 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -127,7 +127,7 @@ Expected status code <201> but was <500>.
 		... 15 more
 	Caused by: [CIRCULAR REFERENCE: java.lang.IllegalStateException: org.hibernate.TransientPropertyValueException: object references an unsaved transient instance - save the transient instance before flushing : com.fulfilment.application.monolith.fulfillment.FulfillmentAssociation.warehouse -> com.fulfilment.application.monolith.warehouses.adapters.database.DbWarehouse]
 
-com.fulfilment.application.monolith.fulfillment.FulfillmentResourceTest.testDeleteFulfillmentAssociation -- Time elapsed: 0.147 s <<< FAILURE!
+com.fulfilment.application.monolith.fulfillment.FulfillmentResourceTest.testDeleteFulfillmentAssociation -- Time elapsed: 0.338 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -250,7 +250,7 @@ Expected status code <201> but was <500>.
 		... 15 more
 	Caused by: [CIRCULAR REFERENCE: java.lang.IllegalStateException: org.hibernate.TransientPropertyValueException: object references an unsaved transient instance - save the transient instance before flushing : com.fulfilment.application.monolith.fulfillment.FulfillmentAssociation.warehouse -> com.fulfilment.application.monolith.warehouses.adapters.database.DbWarehouse]
 
-com.fulfilment.application.monolith.fulfillment.FulfillmentResourceTest.testCreateFulfillmentAssociation_Success -- Time elapsed: 0.113 s <<< FAILURE!
+com.fulfilment.application.monolith.fulfillment.FulfillmentResourceTest.testCreateFulfillmentAssociation_Success -- Time elapsed: 0.271 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -373,7 +373,7 @@ Expected status code <201> but was <500>.
 		... 15 more
 	Caused by: [CIRCULAR REFERENCE: java.lang.IllegalStateException: org.hibernate.TransientPropertyValueException: object references an unsaved transient instance - save the transient instance before flushing : com.fulfilment.application.monolith.fulfillment.FulfillmentAssociation.warehouse -> com.fulfilment.application.monolith.warehouses.adapters.database.DbWarehouse]
 
-com.fulfilment.application.monolith.fulfillment.FulfillmentResourceTest.testGetFulfillmentsByStore -- Time elapsed: 0.168 s <<< FAILURE!
+com.fulfilment.application.monolith.fulfillment.FulfillmentResourceTest.testGetFulfillmentsByStore -- Time elapsed: 0.238 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -496,7 +496,7 @@ Expected status code <201> but was <500>.
 		... 15 more
 	Caused by: [CIRCULAR REFERENCE: java.lang.IllegalStateException: org.hibernate.TransientPropertyValueException: object references an unsaved transient instance - save the transient instance before flushing : com.fulfilment.application.monolith.fulfillment.FulfillmentAssociation.warehouse -> com.fulfilment.application.monolith.warehouses.adapters.database.DbWarehouse]
 
-com.fulfilment.application.monolith.fulfillment.FulfillmentResourceTest.testGetFulfillmentsByWarehouse -- Time elapsed: 0.087 s <<< FAILURE!
+com.fulfilment.application.monolith.fulfillment.FulfillmentResourceTest.testGetFulfillmentsByWarehouse -- Time elapsed: 0.183 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.
@@ -619,7 +619,7 @@ Expected status code <201> but was <500>.
 		... 15 more
 	Caused by: [CIRCULAR REFERENCE: java.lang.IllegalStateException: org.hibernate.TransientPropertyValueException: object references an unsaved transient instance - save the transient instance before flushing : com.fulfilment.application.monolith.fulfillment.FulfillmentAssociation.warehouse -> com.fulfilment.application.monolith.warehouses.adapters.database.DbWarehouse]
 
-com.fulfilment.application.monolith.fulfillment.FulfillmentResourceTest.testCreateFulfillmentAssociation_ConstraintViolation -- Time elapsed: 0.178 s <<< FAILURE!
+com.fulfilment.application.monolith.fulfillment.FulfillmentResourceTest.testCreateFulfillmentAssociation_ConstraintViolation -- Time elapsed: 0.181 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
 Expected status code <201> but was <500>.

@@ -18,16 +18,14 @@ public class ArchiveWarehouseUseCase implements ArchiveWarehouseOperation {
   @Override
   public void archive(Warehouse warehouse) {
     // Validate that warehouse exists
-    Warehouse existing = warehouseStore.findByBusinessUnitCode(warehouse.businessUnitCode);
+    Warehouse existing = warehouseStore.findById(warehouse.id);
     if (existing == null) {
-      throw new IllegalArgumentException("Warehouse with business unit code " + 
-          warehouse.businessUnitCode + " not found");
+      throw new IllegalArgumentException("Warehouse with id " + warehouse.id + " not found");
     }
     
     // Check if warehouse is already archived
     if (existing.archivedAt != null) {
-      throw new IllegalArgumentException("Warehouse with business unit code " + 
-          warehouse.businessUnitCode + " is already archived");
+      throw new IllegalArgumentException("Warehouse with id " + warehouse.id + " is already archived");
     }
     
     // Set archive timestamp

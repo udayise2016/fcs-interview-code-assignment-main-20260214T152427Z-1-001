@@ -34,9 +34,9 @@ public class WarehouseResourceImpl implements WarehouseResource {
 
   @Override
   public com.warehouse.api.beans.Warehouse getAWarehouseUnitByID(String id) {
-    Warehouse domainWarehouse = warehouseRepository.findByBusinessUnitCode(id);
+    Warehouse domainWarehouse = warehouseRepository.findById(id);
     if (domainWarehouse == null) {
-      throw new IllegalArgumentException("Warehouse with business unit code " + id + " not found");
+      throw new IllegalArgumentException("Warehouse with id " + id + " not found");
     }
     return toWarehouseResponse(domainWarehouse);
   }
@@ -45,7 +45,7 @@ public class WarehouseResourceImpl implements WarehouseResource {
   @Transactional
   public void archiveAWarehouseUnitByID(String id) {
     Warehouse domainWarehouse = new Warehouse();
-    domainWarehouse.businessUnitCode = id;
+    domainWarehouse.id = id;
     archiveWarehouseUseCase.archive(domainWarehouse);
   }
 
@@ -65,6 +65,7 @@ public class WarehouseResourceImpl implements WarehouseResource {
 
   private com.warehouse.api.beans.Warehouse toWarehouseResponse(Warehouse warehouse) {
     var response = new com.warehouse.api.beans.Warehouse();
+    response.setId(warehouse.id);
     response.setBusinessUnitCode(warehouse.businessUnitCode);
     response.setLocation(warehouse.location);
     response.setCapacity(warehouse.capacity);
@@ -75,6 +76,7 @@ public class WarehouseResourceImpl implements WarehouseResource {
   
   private Warehouse toDomainWarehouse(com.warehouse.api.beans.Warehouse apiWarehouse) {
     var domainWarehouse = new Warehouse();
+    domainWarehouse.id = apiWarehouse.getId();
     domainWarehouse.businessUnitCode = apiWarehouse.getBusinessUnitCode();
     domainWarehouse.location = apiWarehouse.getLocation();
     domainWarehouse.capacity = apiWarehouse.getCapacity();

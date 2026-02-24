@@ -1,11 +1,11 @@
 -------------------------------------------------------------------------------
 Test set: com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceHttpTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.195 s <<< FAILURE! -- in com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceHttpTest
-com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceHttpTest.testWarehouseEndpointsOverHttp -- Time elapsed: 0.189 s <<< FAILURE!
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.118 s <<< FAILURE! -- in com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceHttpTest
+com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceHttpTest.testWarehouseEndpointsOverHttp -- Time elapsed: 0.113 s <<< FAILURE!
 java.lang.AssertionError: 
 1 expectation failed.
-Expected status code <204> but was <400>.
+Expected status code <200> but was <400>.
 
 	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor116.newInstance(Unknown Source)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -29,7 +29,7 @@ Expected status code <204> but was <400>.
 	at io.restassured.specification.ResponseSpecification$statusCode$0.callCurrent(Unknown Source)
 	at io.restassured.internal.ResponseSpecificationImpl.statusCode(ResponseSpecificationImpl.groovy:143)
 	at io.restassured.internal.ValidatableResponseOptionsImpl.statusCode(ValidatableResponseOptionsImpl.java:89)
-	at com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceHttpTest.testWarehouseEndpointsOverHttp(WarehouseResourceHttpTest.java:73)
+	at com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceHttpTest.testWarehouseEndpointsOverHttp(WarehouseResourceHttpTest.java:54)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at io.quarkus.test.junit.QuarkusTestExtension.runExtensionMethod(QuarkusTestExtension.java:973)
 	at io.quarkus.test.junit.QuarkusTestExtension.interceptTestMethod(QuarkusTestExtension.java:823)
