@@ -233,5 +233,10 @@ public class ArchiveWarehouseUseCaseTest {
     public Warehouse findByBusinessUnitCode(String buCode) {
       return warehouseToReturn;
     }
+
+    @Override
+    public Warehouse findById(String id) {
+      return warehouseToReturn;
+    }
   }
 }

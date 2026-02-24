@@ -1,15 +1,16 @@
 -------------------------------------------------------------------------------
 Test set: com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceImplTest
 -------------------------------------------------------------------------------
-Tests run: 11, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.249 s <<< FAILURE! -- in com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceImplTest
-com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceImplTest.testReplaceTheCurrentActiveWarehouse -- Time elapsed: 0.019 s <<< ERROR!
-java.lang.IllegalArgumentException: Replacing warehouse would exceed location's maximum capacity. Current: 0, Replacing with: 200, Max allowed: 100
-	at com.fulfilment.application.monolith.warehouses.domain.usecases.ReplaceWarehouseUseCase.validateCapacityAndStockAgainstLocationLimitsForReplace(ReplaceWarehouseUseCase.java:103)
-	at com.fulfilment.application.monolith.warehouses.domain.usecases.ReplaceWarehouseUseCase.replace(ReplaceWarehouseUseCase.java:69)
-	at com.fulfilment.application.monolith.warehouses.domain.usecases.ReplaceWarehouseUseCase_ClientProxy.replace(Unknown Source)
-	at com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceImpl.replaceTheCurrentActiveWarehouse(WarehouseResourceImpl.java:59)
-	at com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceImpl_ClientProxy.replaceTheCurrentActiveWarehouse(Unknown Source)
-	at com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceImplTest.testReplaceTheCurrentActiveWarehouse(WarehouseResourceImplTest.java:166)
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 27.81 s <<< FAILURE! -- in com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceImplTest
+com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceImplTest.testArchiveAWarehouseUnitByID -- Time elapsed: 2.357 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: not <null>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertNotNull.failNull(AssertNotNull.java:49)
+	at org.junit.jupiter.api.AssertNotNull.assertNotNull(AssertNotNull.java:35)
+	at org.junit.jupiter.api.AssertNotNull.assertNotNull(AssertNotNull.java:30)
+	at org.junit.jupiter.api.Assertions.assertNotNull(Assertions.java:304)
+	at com.fulfilment.application.monolith.warehouses.adapters.restapi.WarehouseResourceImplTest.testArchiveAWarehouseUnitByID(WarehouseResourceImplTest.java:128)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at io.quarkus.test.junit.QuarkusTestExtension.runExtensionMethod(QuarkusTestExtension.java:973)
 	at io.quarkus.test.junit.QuarkusTestExtension.interceptTestMethod(QuarkusTestExtension.java:823)

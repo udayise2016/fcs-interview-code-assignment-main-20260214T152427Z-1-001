@@ -24,19 +24,29 @@ public class WarehouseRepository implements WarehouseStore, PanacheRepository<Db
     }
     DbWarehouse dbWarehouse = new DbWarehouse(warehouse);
     this.persistAndFlush(dbWarehouse);
+    // Set the generated ID back to the domain warehouse
+    warehouse.id = dbWarehouse.id.toString();
   }
 
   @Override
   @Transactional
   public void update(Warehouse warehouse) {
-    DbWarehouse dbWarehouse = find("businessUnitCode", warehouse.businessUnitCode).firstResult();
+    DbWarehouse dbWarehouse;
+    if (warehouse.id != null) {
+      // Find by ID if available
+      dbWarehouse = find("id", Long.parseLong(warehouse.id)).firstResult();
+    } else {
+      // Fallback to businessUnitCode
+      dbWarehouse = find("businessUnitCode", warehouse.businessUnitCode).firstResult();
+    }
+    
     if (dbWarehouse != null) {
       dbWarehouse.location = warehouse.location;
       dbWarehouse.capacity = warehouse.capacity;
       dbWarehouse.stock = warehouse.stock;
       dbWarehouse.createdAt = warehouse.createdAt;
       dbWarehouse.archivedAt = warehouse.archivedAt;
-      this.persistAndFlush(dbWarehouse);
+      getEntityManager().merge(dbWarehouse);
     }
   }
 
@@ -52,6 +62,12 @@ public class WarehouseRepository implements WarehouseStore, PanacheRepository<Db
   @Override
   public Warehouse findByBusinessUnitCode(String buCode) {
     DbWarehouse dbWarehouse = find("businessUnitCode", buCode).firstResult();
+    return dbWarehouse != null ? dbWarehouse.toWarehouse() : null;
+  }
+
+  @Override
+  public Warehouse findById(String id) {
+    DbWarehouse dbWarehouse = find("id", id).firstResult();
     return dbWarehouse != null ? dbWarehouse.toWarehouse() : null;
   }
 }
